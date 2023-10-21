@@ -8,10 +8,12 @@ Project Idea: </p>
 <p>
 Leetcode school and class-based 
     - Algorithm visualizer (on the side if we have time)
+    <ul>     
     <li> Msu based with class subcategories </li>
     <li> Focuses on class material being learned </li>
     <li> Theme it as the code being a challenger </li>
     <li> Prompt: ___ coding challenges defeated </li> 
+    </ul>
 
 </p>
 <p>
