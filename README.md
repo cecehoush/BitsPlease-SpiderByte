@@ -1,4 +1,4 @@
-# Heading
+
 
 <h1> MSU and DU Hackathon </h1>
 Team name: Bits Please 
