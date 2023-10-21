@@ -1,8 +1,12 @@
 <h1> MSU and DU Hackathon </h1>
 
 Team name: Bits Please 
+<p>
 Team members: Cece Housh, Vincent Cordova, and Danny Vo
+</p>
+<p>
 Algorithm Visualizer name: DigitalDive
+</p>
 <p>
 Project Idea: </p>
 <p>
