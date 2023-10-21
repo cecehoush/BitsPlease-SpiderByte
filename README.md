@@ -8,12 +8,11 @@ Project Idea: </p>
 <p>
 Leetcode school and class-based 
     - Algorithm visualizer (on the side if we have time)
-    <li>
-    * Msu based with class subcategories 
-    * Focuses on class material being learned 
-    * Theme it as the code being a challenger 
-    * Prompt: ___ coding challenges defeated 
-    </li>
+    <li> Msu based with class subcategories </li>
+    <li> Focuses on class material being learned </li>
+    <li> Theme it as the code being a challenger </li>
+    <li> Prompt: ___ coding challenges defeated </li> 
+
 </p>
 <p>
     Main idea: Normal User logs in, list of CS classes, go to a class, in classes there’s a list of coding practice problems, in a problem create an answer and submit, once submitted user can look at a solution that could work and to the right would be algorithm visualizer. 
