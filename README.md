@@ -1,14 +1,14 @@
 <h1> MSU and DU Hackathon </h1>
 
-<strong> Team Name </strong>: Bits Please 
+<strong>Team Name</strong>: Bits Please 
 <p>
-<strong> Team Members </strong>: Cece Housh, Vincent Cordova, and Danny Vo
+<strong>Team Members</strong>: Cece Housh, Vincent Cordova, and Danny Vo
 </p>
 <p>
-Algorithm Visualizer name: DigitalDive
+<strong>Algorithm Visualizer name</strong>: DigitalDive
 </p>
 <p>
-Project Idea: </p>
+<strong>Project Idea</strong>: </p>
 <p>
 Leetcode school and class-based 
     <ul>     
@@ -21,12 +21,12 @@ Leetcode school and class-based
 
 </p>
 <p>
-    Main idea: Normal User logs in, list of CS classes, go to a class, in classes there’s a list of coding practice problems, in a problem create an answer and submit, once submitted user can look at a solution that could work and to the right would be algorithm visualizer. 
+<strong>Main idea</strong>: Normal User logs in, list of CS classes, go to a class, in classes there’s a list of coding practice problems, in a problem create an answer and submit, once submitted user can look at a solution that could work and to the right would be algorithm visualizer. 
     * Could have Normal user (student), administrator user (leader) that posts solutions and can delete, and professor user (teacher) can log on and post their answers. Students can pick the professors to see what their answer is.
 </p>
  
     
-Embellishments: 
+<strong>Embellishments</strong>: 
 * limit to favorites
 * weekly coding events (Arena)
 * badges/ranking system (points for challenges
