@@ -2,10 +2,10 @@
 
 <strong>Team Name:</strong> Bits Please
 <p>
-<strong>Web Name:</strong> Algo Arena
+<strong>Team Members:</strong> Cece Housh, Vincent Cordova, and Danny Vo
 </p>
 <p>
-<strong>Team Members:</strong> Cece Housh, Vincent Cordova, and Danny Vo
+<strong>Web Name:</strong> Algo Arena
 </p>
 <p>
 <strong>Algorithm Visualizer name:</strong> DigitalDive
