@@ -1,11 +1,14 @@
 <h1> MSU and DU Hackathon </h1>
 
-<strong>Team Name</strong>: Bits Please 
+<strong>Team Name:</strong> Bits Please
 <p>
-<strong>Team Members</strong>: Cece Housh, Vincent Cordova, and Danny Vo
+<strong>Web Name:</strong> Algo Arena
 </p>
 <p>
-<strong>Algorithm Visualizer name</strong>: DigitalDive
+<strong>Team Members:</strong> Cece Housh, Vincent Cordova, and Danny Vo
+</p>
+<p>
+<strong>Algorithm Visualizer name:</strong> DigitalDive
 </p>
 <p>
 <h2><strong>Project Idea:</strong></h2> </p>
