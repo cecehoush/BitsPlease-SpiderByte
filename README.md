@@ -1,5 +1,6 @@
-# BitsPlease-AlgoArena
-MSU and DU Hackathon
+# Heading
+
+<h1> MSU and DU Hackathon </h1>
 Team name: Bits Please 
 Team members: Cece Housh, Vincent Cordova, and Danny Vo
 Algorithm Visualizer name: DigitalDive
