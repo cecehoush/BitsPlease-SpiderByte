@@ -10,7 +10,7 @@
 <p>
 <strong>Project Idea</strong>: </p>
 <p>
-Leetcode school and class-based 
+<em> Leetcode school and class-based </em>
     <ul>     
     <li> Algorithm visualizer (on the side if we have time) </li>
     <li> Msu based with class subcategories </li>
