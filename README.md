@@ -30,13 +30,17 @@
  
     
 <strong>Embellishments</strong>: 
-* limit to favorites (max of 10)
-* weekly coding events (Arena)
-* badges/ranking system (points for challenges
+* Add a limit to favorites (max of 10)
+* Adding titles
+* Make titles include course name for challenges and use name for profile <span>&#10003;</span>
+* Add a logo on the top left
+* Make the checkboxes hearts to symbolize 'favorites'
+* Weekly coding events (Arena)
+* Badges/ranking system (points for challenges
 * For completed:
       - percent completion
       - attempts/time taken
 * Tutor links/professor feedback
-* if you fail 3+ attempts, it recommends an easier or similar problem
+* If you fail 3+ attempts, it recommends an easier or similar problem
 * Add code to completed challenge, so you can view what you've submitted
-* once finished, unpin
+* Once finished with challenge, unpin it from favorites
