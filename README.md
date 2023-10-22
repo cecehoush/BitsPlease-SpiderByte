@@ -15,7 +15,7 @@
 <p>
 <em> Leetcode school and class-based </em>
     <ul>     
-    <li> Algorithm visualizer (on the side if we have time) </li>
+    <li> Algorithm visualizer </li>
     <li> Msu based with class subcategories </li>
     <li> Focuses on class material being learned </li>
     <li> Theme it as the code being a challenger </li>
