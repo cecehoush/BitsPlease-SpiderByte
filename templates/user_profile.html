@@ -5,9 +5,8 @@
     <div class="box"> -->
 
     <button type="button" class="btn-1" onclick=simple_action("{{ url_for('courses') }}")>Courses</button>
-    <button type="button" class="btn-1" >Completed</button>
+    <button type="button" class="btn-1" onclick=simple_action("{{ url_for('completed') }}")>Completed</button>
 
-        
     <!-- </div> -->
     <script type="text/javascript">
         function simple_action(target) {

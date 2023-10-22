@@ -18,6 +18,9 @@
                     <td>{{ challenge.challengeid }}</td>
                     <td>{{ challenge.description }}</td>
                     <td>{{ challenge.difficulty }}</td>
+                    <td>
+                        <input type="checkbox" class="favorite-challenge" data-challenge-id="{{ challenge.challengeid }}" {% if challenge in current_user.favorites %} checked {% endif %}>
+                    </td>                    
                     <td>     
                         <button type="button" class="btn-1">Start</button>
                     </td>
@@ -31,6 +34,24 @@
             window.location = target
         }
     </script>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function() {
+            const checkboxes = document.querySelectorAll('.favorite-challenge');
+            checkboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', function() {
+                    const challengeId = this.getAttribute('data-challenge-id');
+                    const isChecked = this.checked;
+                    fetch(`/favorite_challenge/${challengeId}`, {
+                        method: isChecked ? 'POST' : 'DELETE',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+    
 </div>
 
 {% endblock %}

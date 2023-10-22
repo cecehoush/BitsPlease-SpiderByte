@@ -7,6 +7,8 @@ class User(db.Model, UserMixin):
     id = db.Column(db.String, primary_key=True)
     password = db.Column(db.LargeBinary, nullable=False)
     userChallenge = db.relationship('UserChallenge', backref='user_ref', lazy=True)
+    favorites = db.relationship('Challenge', secondary='favorite_challenges', backref=db.backref('favorited_by', lazy=True))
+
 
 class UserChallenge(db.Model):
     __tablename__ = 'user_challenges'
@@ -25,6 +27,12 @@ class Challenge(db.Model):
     description = db.Column(db.String)
     difficulty = db.Column(db.String)
 # answers = db.Column(db.String)  #make multiple answers possible 
+
+class FavoriteChallenge(db.Model):
+    __tablename__ = 'favorite_challenges'
+    user_id = db.Column(db.String, db.ForeignKey('users.id'), primary_key=True)
+    challenge_id = db.Column(db.String, db.ForeignKey('challenges.challengeid'), primary_key=True)
+    timestamp = db.Column(db.DateTime, default=datetime.utcnow)
 
 
 #   user_type = db.Column(db.String)

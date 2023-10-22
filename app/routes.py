@@ -3,7 +3,7 @@ import uuid
 from app import app, db, load_user
 from app.models import Challenge, User, UserChallenge, Course
 from app.forms import SignUpForm, SignInForm
-from flask import flash, render_template, redirect, session, url_for, request
+from flask import flash, jsonify, render_template, redirect, session, url_for, request
 from flask_login import login_required, login_user, logout_user, current_user
 import bcrypt
 
@@ -85,6 +85,7 @@ def user_profile():
 
 @app.route('/courses', defaults={'courseid': None}, methods=['GET', 'POST'])
 @app.route('/courses/<courseid>', methods=['GET', 'POST'])
+@login_required
 def courses(courseid):
     if courseid:
 
@@ -120,6 +121,35 @@ def courses(courseid):
 
     courses = Course.query.all()
     return render_template('courselist.html', courses=courses)
+
+@app.route('/completed', methods=['GET', 'POST'])
+@login_required
+def completed():
+    userchallenge = UserChallenge.query.filter_by(user_id=current_user.id).all()
+    # fakeUserChallenge = UserChallenge(challengeid='unga bunga', user_id='cc')
+    # db.session.add(fakeUserChallenge)
+    # db.session.commit()
+
+    return render_template('completed.html', user=current_user, userChallenge=userchallenge)
+
+@app.route('/favorite_challenge/<challenge_id>', methods=['POST'])
+@login_required
+def add_favorite_challenge(challenge_id):
+    challenge = Challenge.query.get(challenge_id)
+    if challenge not in current_user.favorites:
+        current_user.favorites.append(challenge)
+        db.session.commit()
+    return '', 204
+
+@app.route('/favorite_challenge/<challenge_id>', methods=['DELETE'])
+@login_required
+def remove_favorite_challenge(challenge_id):
+    challenge = Challenge.query.get(challenge_id)
+    if challenge in current_user.favorites:
+        current_user.favorites.remove(challenge)
+        db.session.commit()
+    return '', 204
+
 
 
  # switch to add courses    
