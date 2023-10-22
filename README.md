@@ -59,6 +59,7 @@
         <ul>
             <li> Flask </li>
             <li> SQLAlchemy </li>
+            <li> Bcrypt </li>
         </ul>
     </ul>
 </p>
