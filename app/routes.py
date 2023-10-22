@@ -137,24 +137,6 @@ def courses(courseid):
 
         challenges = Challenge.query.filter_by(courseid=courseid).all()
         return render_template('challengelist.html', challenges=challenges, courseid=courseid)
-    
-# newChallenge = Challenge(challengeid='ooga booga', courseid='1050', description='put ooga in booga', difficulty='easy')
-# newChallenge1 = Challenge(challengeid='oogity boogity', courseid='CS1050', description='Make an array of 10 boogities', difficulty='medium')
-#db.session.add(newChallenge)
-#db.session.add(newChallenge1)
-
-    # newCourse = Course(courseid='CS1050', description='Computer Science 1')
-    # newCourse1 = Course(courseid='CS1051', description='Computer Science 2')
-    # newCourse2 = Course(courseid='CS1052', description='Computer Science 3')
-
-    # db.session.add(newCourse)
-    # db.session.add(newCourse1)
-    # db.session.add(newCourse2)
-    # newCourseOoga = Challenge(courseid = 'CS1050', challengeid='wortwort', description='Create function multiply that will multiply 2 numbers and return the result.', difficulty='HARD', test_cases=[TestCase(input="1,2", required_output='2', test_function='multiply'), TestCase(input="3,2", required_output='6', test_function='multiply')])
-    # db.session.add(newCourseOoga)
-    # db.session.commit()
-    # If no specific courseid is provided, list all courses
-
 
     courses = Course.query.all()
     return render_template('courselist.html', courses=courses)
@@ -185,6 +167,7 @@ def remove_favorite_challenge(challenge_id):
     return '', 204
 
 
+
 @app.route('/addchallenge', methods=['GET', 'POST'])
 #@login_required
 def add_challenge():
@@ -193,7 +176,7 @@ def add_challenge():
         newChallenge = Challenge(challengeid=cform.challengeid.data,
                                  courseid=cform.courseid.data,
                                  description=cform.description.data,
-                                 difficulty=cform.cform.data)
+                                 difficulty=cform.difficulty.data)
         for tcf in cform.test_cases:
             test_input = tcf.test_input.data
             expected_output = tcf.expected_output.data
@@ -202,30 +185,9 @@ def add_challenge():
                                input=test_input,
                                required_output=expected_output)
             db.session.add(newTestCase)
+        print(newChallenge)
         db.session.add(newChallenge)
         db.session.commit()
+        return redirect(url_for('courses'))
 
     return render_template('addChallenge.html', form=cform)
-
-
- # switch to add courses    
-# @app.route('/add_product', methods=['GET', 'POST'])
-# @login_required 
-# def add_product():
-#     form = ProductForm()
-#     if not isinstance(current_user._get_current_object(), Admin):
-#         return redirect(url_for('products'))
-#     if form.validate_on_submit():
-#         code = form.code.data
-#         price = form.price.data
-#         windowOrDoor = form.type.data
-#         description = form.description.data
-#         available = form.available.data
-
-#         new_product = Product(code=code, price=price, type=windowOrDoor, description=description, available=available)
-#         db.session.add(new_product)
-#         db.session.commit()
-
-#         return redirect(url_for('products'))
-    
-#     return render_template('add_product.html', form=form)

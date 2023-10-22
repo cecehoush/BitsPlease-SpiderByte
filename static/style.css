@@ -111,6 +111,20 @@
     border: 2px solid var(--contrast-color);
   }
 
+.autobox {
+  position: absolute;
+  left: 50%;
+  transform: translateY(20%);
+  transform: translateX(-50%);
+  width: auto;
+  height: auto;
+  border-radius: 5px;
+  background-color: var(--island-color);
+  color: white;
+  padding: 20px;
+  border: 2px solid var(--contrast-color);
+}
+
   .box2 {
     position: absolute;
     top: 13%;
@@ -261,4 +275,8 @@
   font-size: 1.6em;     
   font-weight: bold; 
   color: #5ead79; 
+}
+
+textarea {
+  height: 150px;  /* Or whatever height you desire */
 }

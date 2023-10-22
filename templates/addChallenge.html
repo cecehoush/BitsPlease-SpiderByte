@@ -1,39 +1,49 @@
 {% extends 'base.html' %}
+
+{% block extra_styles_and_scripts %}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+{% endblock %}
+
 {% block main %}
-<form action="" method="POST" novalidate>
-    {{ form.hidden_tag() }}
-    {{ form.courseid.label }} {{ form.courseid() }}<br>
-    {{ form.challengeid.label }} {{ form.challengeid() }}<br>
-    {{ form.description.label }} {{ form.description() }}<br>
-    {{ form.difficulty.label }} {{ form.difficulty() }}<br>
-    {{ form.functionName.label }} {{ form.functionName() }}<br>
-    
-    {% for test_case in form.test_cases %}
-    <div class="test-case-block">
-        {{ test_case.test_input.label }} {{ test_case.test_input() }}<br>
-        {{ test_case.expected_output.label }} {{ test_case.expected_output() }}<br>
-    </div>
-    {% endfor %}
-    
-    <button type="button" id="addTestCase">Add Test Case</button>
-    <button type="button" id="removeTestCase">Remove Test Case</button>
-    {{ form.submit() }}
-</form>
+<div class="autobox">
+    <form action="" method="POST" novalidate>
+        {{ form.hidden_tag() }}
+        {{ form.courseid.label }}<br> {{ form.courseid() }}<br>
+        {{ form.challengeid.label }} <br>{{ form.challengeid() }}<br>
+        {{ form.description.label }}<br> {{ form.description() }}<br>
+        {{ form.difficulty.label }}<br> {{ form.difficulty() }}<br>
+        {{ form.functionName.label }} <br>{{ form.functionName() }}<br>
+
+        <div id="testCasesContainer">
+            {% for test_case in form.test_cases %}
+            <div class="test-case-block">
+                {{ test_case.test_input.label }} <br> {{ test_case.test_input() }}<br>
+                {{ test_case.expected_output.label }}<br> {{ test_case.expected_output() }}<br>
+            </div>
+            {% endfor %}
+        </div>
+        
+        <button type="button" class="btn-2" id="addTestCase">Add Test Case</button>
+        <button type="button" class="btn-2" id="removeTestCase">Remove Test Case</button>
+        <input class="btn-1" type="submit" value="Add">
+    </form>
+</div>
 <script>
-    $(document).ready(function() {
-        $('#addTestCase').click(function() {
-            // Append new test case fields
-            const newTestCaseHtml = `
-                <div class="test-case-block">
-                    <label>Test Input:</label> <input type="text" name="test_input[]"><br>
-                    <label>Expected Output:</label> <input type="text" name="expected_output[]"><br>
-                </div>`;
-            $('#testCasesContainer').append(newTestCaseHtml);
-        });
-    
-        $('#removeTestCase').click(function() {
-            $('.test-case-block').last().remove();
-        });
+$(document).ready(function() {
+    $('#addTestCase').click(function() {
+        // Append new test case fields
+        const newTestCaseHtml = `
+            <div class="test-case-block">
+                <label>Test Input:</label> <input type="text" name="test_input[]"><br>
+                <label>Expected Output:</label> <input type="text" name="expected_output[]"><br>
+            </div>`;
+        $('#testCasesContainer').append(newTestCaseHtml);
     });
+
+    $('#removeTestCase').click(function() {
+        // Remove the last test case block
+        $('.test-case-block').last().remove();
+    });
+});
 </script>
 {% endblock %}

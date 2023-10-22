@@ -20,7 +20,7 @@ class TestCaseForm(Form):
 class ChallengeForm(FlaskForm):
     courseid = StringField('Course ID', validators=[DataRequired()])
     challengeid = StringField('Challenge Name', validators=[DataRequired()])
-    description = StringField('Challenge Description', validators=[DataRequired()])
+    description = TextAreaField('Challenge Description', validators=[DataRequired()])
     difficulty = StringField('Difficulty Level', validators=[DataRequired()])
     functionName = StringField('Function Name', validators=[DataRequired()])
     test_cases = FieldList(FormField(TestCaseForm), min_entries=1) # At least one test case
