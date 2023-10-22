@@ -87,9 +87,26 @@ def user_profile():
 @app.route('/courses/<courseid>', methods=['GET', 'POST'])
 def courses(courseid):
     if courseid:
-        # Fetch challenges for the specific course
+
         challenges = Challenge.query.filter_by(courseid=courseid).all()
         return render_template('challengelist.html', challenges=challenges)
+    
+    # newChallenge = Challenge(challengeid='ooga booga', courseid='1050', description='put ooga in booga', difficulty='easy')
+    # newChallenge1 = Challenge(challengeid='oogity boogity', courseid='CS1050', description='Make an array of 10 boogities', difficulty='medium')
+    # newChallenge2 = Challenge(challengeid='unga bunga', courseid='CS1050', description='make unga a bunga', difficulty='hard')
+    # newChallenge3 = Challenge(challengeid='ooga super', courseid='CS1051', description='make an ooga array', difficulty='easy')
+    # newChallenge4 = Challenge(challengeid='Web ooga', courseid='CS1051', description='make ooga website', difficulty='medium')
+    # newChallenge5 = Challenge(challengeid='Web booga', courseid='CS1051', description='make booga website', difficulty='hard')
+    # newChallenge6 = Challenge(challengeid='aurrhe', courseid='CS1052', description='arf array', difficulty='easy')
+
+    # db.session.add(newChallenge)
+    # db.session.add(newChallenge1)
+    # db.session.add(newChallenge2)
+    # db.session.add(newChallenge3)
+    # db.session.add(newChallenge4)
+    # db.session.add(newChallenge5)
+    # db.session.add(newChallenge6)
+
     # newCourse = Course(courseid='CS1050', description='Computer Science 1')
     # newCourse1 = Course(courseid='CS1051', description='Computer Science 2')
     # newCourse2 = Course(courseid='CS1052', description='Computer Science 3')
@@ -99,6 +116,8 @@ def courses(courseid):
     # db.session.add(newCourse2)
     # db.session.commit()
     # If no specific courseid is provided, list all courses
+
+
     courses = Course.query.all()
     return render_template('courselist.html', courses=courses)
 

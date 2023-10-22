@@ -24,7 +24,7 @@ class Challenge(db.Model):
     courseid = db.Column(db.String)
     description = db.Column(db.String)
     difficulty = db.Column(db.String)
-    answers = db.Column(db.String)  #make multiple answers possible 
+# answers = db.Column(db.String)  #make multiple answers possible 
 
 
 #   user_type = db.Column(db.String)

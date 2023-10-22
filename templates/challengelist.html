@@ -19,7 +19,7 @@
                     <td>{{ challenge.description }}</td>
                     <td>{{ challenge.difficulty }}</td>
                     <td>     
-                        <button type="button" class="btn-1" onclick=simple_action("{{ url_for('challenges', challengeid=challenge.challengeid, description=challenge.description, difficulty=challenge.difficulty) }}")>Challenges</button>
+                        <button type="button" class="btn-1">Start</button>
                     </td>
                 </tr>
         {% endfor %}
