@@ -2,12 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet"  type="text/css" href="{{ url_for('.static', filename='style.css')}} ">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('.static', filename='style.css')}} ">
     <title>{{ title }}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.3/codemirror.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.3/codemirror.min.js"></script>
+    {% block extra_styles_and_scripts %}{% endblock %}
 </head>
 <body>
     <!-- <div id="head-img"></div> -->
-{% block main %}
-{% endblock %}
+    {% block main %}{% endblock %}
 </body>
 </html>

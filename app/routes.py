@@ -1,8 +1,10 @@
 from datetime import datetime
 import uuid
-from app import app, db, load_user
+from app import Submission, app, db, load_user
 from app.models import User
 from app.forms import SignUpForm, SignInForm
+from app.codetest import TestUserCode
+from app.runcode import executePython
 from flask import flash, render_template, redirect, session, url_for, request
 from flask_login import login_required, login_user, logout_user, current_user
 import bcrypt
@@ -13,6 +15,17 @@ import bcrypt
 @app.route('/authentication.html')
 def authentication(): 
     return render_template('authentication.html')
+
+@app.route('/submit', methods=['POST'])
+def submit_code():
+    code = request.form.get('code')
+    if code:
+        submission = Submission(code=code)
+        print(code)
+        db.session.add(submission)
+        db.session.commit()
+        return "Code submitted successfully!"
+    return "Error in submission!", 400
 
 # sign-in functionality from previous homework
 @app.route('/users/signin', methods=['GET', 'POST'])
@@ -42,6 +55,16 @@ def users_signin():
         else:
             return ('<p>Incorrect Password</p>')
     return render_template('signin.html', form=signInForm)
+
+
+@app.route('/editor', methods=['GET', 'POST'])
+def code_editor():
+    if request.method == 'POST':
+        user_code = request.form['code']
+        print(TestUserCode.test_add(user_code))
+        result = executePython(user_code)
+        return result  # This sends the result back as plain text to the frontend
+    return render_template('codeEditor.html')
 
 # sign-up functionality from previous homework
 @app.route('/users/signup', methods=['GET', 'POST'])
