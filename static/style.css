@@ -1,7 +1,7 @@
 :root {
     --back-color: #1c2029;
     --island-color: #3e4655; /* 3e4a61 */
-    --contrast-color: #5ead79; /* button color */
+    --contrast-color: #5ead79; 
     --outline-color: #c24d2c;
     --compliment-color: #77c0e4;
   }
@@ -165,6 +165,7 @@
   transform: translateY(50%);
 }
 
+/* Logo */
 #head-img {
   justify-content: center;
   width: 130px;
@@ -173,6 +174,8 @@
   background-repeat: no-repeat;
   background-image: url('/static/pics/SpiderByteLogo.png');
 }
+
+/* heart checkboxes */
 
 .heart-checkbox {
   cursor: pointer;
@@ -202,6 +205,8 @@
   display: inline-block; /* Show solid heart when checked */
 }
 
+/* Titles */
+
 .course-title {
   text-align: center; 
   font-size: 1.6em;     
@@ -218,5 +223,11 @@
 .profile-title {
   text-align: center;  
   font-size: 1.6em;      
+  font-weight: bold;  
+}
+
+.completed-title {
+  text-align: center;
+  font-size: 1.6em; 
   font-weight: bold;  
 }
