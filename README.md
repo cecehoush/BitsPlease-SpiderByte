@@ -5,7 +5,7 @@
 <strong>Team Members:</strong> Cece Housh, Vincent Cordova, and Danny Vo
 </p>
 <p>
-<strong>Web Name:</strong> Algo Arena
+<strong>Web Name:</strong> SpiderByte
 </p>
 <p>
 <strong>Algorithm Visualizer name:</strong> DigitalDive
