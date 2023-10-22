@@ -92,7 +92,7 @@ def courses(courseid):
     if courseid:
 
         challenges = Challenge.query.filter_by(courseid=courseid).all()
-        return render_template('challengelist.html', challenges=challenges)
+        return render_template('challengelist.html', challenges=challenges, courseid=courseid)
     
     # newChallenge = Challenge(challengeid='ooga booga', courseid='1050', description='put ooga in booga', difficulty='easy')
     # newChallenge1 = Challenge(challengeid='oogity boogity', courseid='CS1050', description='Make an array of 10 boogities', difficulty='medium')
