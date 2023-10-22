@@ -47,6 +47,6 @@
     </ul>
     <li> Tutor links/professor feedback </li>
     <li> If you fail 3+ attempts, it recommends an easier or similar problem </li>
-    <li> Add code to completed challenge, so you can view what you've submitted </li>
+    <li> Be able to view what you've submitted in 'views' </li>
     <li> Once finished with a challenge, unpin it from favorites </li>
 </ul>
