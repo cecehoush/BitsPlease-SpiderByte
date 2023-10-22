@@ -39,3 +39,4 @@
 * Tutor links/professor feedback
 * if you fail 3+ attempts, it recommends an easier or similar problem
 * Add code to completed challenge, so you can view what you've submitted
+* once finished, unpin
