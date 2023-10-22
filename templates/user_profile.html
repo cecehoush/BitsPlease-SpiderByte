@@ -23,8 +23,10 @@
             <!-- show the user's courses in the table -->
             {% for challenge in favorited_challenges %}
 
-                {% if challenge.difficulty == 'easy'%}
-                    {% set points = points + 1%}
+                {% if loop.index <= 10 %} {# display up to 10 favorites #}
+
+                {% if challenge.difficulty == 'easy' %}
+                    {% set points = points + 1 %}
                 {% elif challenge.difficulty == 'medium' %}
                     {% set points = points + 2 %}
                 {% elif challenge.difficulty == 'hard' %}
@@ -43,6 +45,7 @@
                             <button type="button" class="btn-1">Start</button>
                         </td>
                     </tr>
+                {% endif %}
             {% endfor %}
         </table>
 

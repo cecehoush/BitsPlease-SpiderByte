@@ -75,9 +75,6 @@
     box-shadow: inset 300px 0 0 0 var(--compliment-color);
     cursor: pointer;
     color: #000;
-<<<<<<< HEAD
-  }
-=======
   }
 
   .btn-2 {
@@ -233,7 +230,6 @@
   font-size: 1.6em; 
   font-weight: bold;  
 }
->>>>>>> d1598ce50f9aeccc193f3aabc634bead9b43e1f8
 
 .user-points {
   text-align: center;

@@ -138,11 +138,10 @@ def courses(courseid):
         challenges = Challenge.query.filter_by(courseid=courseid).all()
         return render_template('challengelist.html', challenges=challenges, courseid=courseid)
     
-    # newChallenge = Challenge(challengeid='ooga booga', courseid='1050', description='put ooga in booga', difficulty='easy')
-    # newChallenge1 = Challenge(challengeid='oogity boogity', courseid='CS1050', description='Make an array of 10 boogities', difficulty='medium')
-
-    # db.session.add(newChallenge)
-    # db.session.add(newChallenge1)
+# newChallenge = Challenge(challengeid='ooga booga', courseid='1050', description='put ooga in booga', difficulty='easy')
+# newChallenge1 = Challenge(challengeid='oogity boogity', courseid='CS1050', description='Make an array of 10 boogities', difficulty='medium')
+#db.session.add(newChallenge)
+#db.session.add(newChallenge1)
 
     # newCourse = Course(courseid='CS1050', description='Computer Science 1')
     # newCourse1 = Course(courseid='CS1051', description='Computer Science 2')
@@ -164,9 +163,6 @@ def courses(courseid):
 @login_required
 def completed():
     userchallenge = UserChallenge.query.filter_by(user_id=current_user.id).all()
-    # fakeUserChallenge = UserChallenge(challengeid='unga bunga', user_id='Hi')
-    # db.session.add(fakeUserChallenge)
-    # db.session.commit()
 
     return render_template('completed.html', user=current_user, userChallenge=userchallenge)
 
