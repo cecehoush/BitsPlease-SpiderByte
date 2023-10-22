@@ -40,6 +40,13 @@
                                 <button type="submit">DELETE</button>
                             </form>
                         {% endif %}
+                        <td>
+                        {% if is_admin %}
+                            <form action="{{ url_for('add_challenge', challenge_id=challenge.challengeid) }}" method="post" style="display: inline;">
+                                <button type="submit">ADD</button>
+                            </form>
+                        {% endif %}
+                        </td>
                     </td>
                 </tr>
         {% endfor %}
