@@ -2,8 +2,8 @@
 {% block main %}
 <div class="container">
 
+    
     <h1 class="profile-title"> {{user.id}}'s Profile</h1>
-
     <div class="box-products">
         <button type="button" class="btn-2" onclick=simple_action("{{ url_for('courses') }}")>Courses</button>
         <button type="button" class="btn-2" onclick=simple_action("{{ url_for('completed') }}")>Completed</button>
