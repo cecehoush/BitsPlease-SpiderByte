@@ -6,6 +6,27 @@ class User(db.Model, UserMixin):
     __tablename__ = 'users'
     id = db.Column(db.String, primary_key=True)
     password = db.Column(db.LargeBinary, nullable=False)
+    userChallenge = db.relationship('UserChallenge', backref='user_ref', lazy=True)
+
+class UserChallenge(db.Model):
+    __tablename__ = 'user_challenges'
+    challengeid = db.Column(db.String, primary_key=True)
+    user_id = db.Column(db.String, db.ForeignKey('users.id'), nullable=False)
+
+
+class Course(db.Model):
+    __tablename__= 'courses'
+    courseid = db.Column(db.String, primary_key=True)
+    description = db.Column(db.String)
+
+class Challenge(db.Model):
+    __tablename__ = 'challenges'
+    challengeid = db.Column(db.String, primary_key=True)
+    courseid = db.Column(db.String)
+    description = db.Column(db.String)
+    difficulty = db.Column(db.String)
+
+
 #   user_type = db.Column(db.String)
 
 # class Reseller(User):

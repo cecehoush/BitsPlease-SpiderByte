@@ -1,7 +1,7 @@
 from datetime import datetime
 import uuid
 from app import app, db, load_user
-from app.models import User
+from app.models import Challenge, User, UserChallenge, Course
 from app.forms import SignUpForm, SignInForm
 from flask import flash, render_template, redirect, session, url_for, request
 from flask_login import login_required, login_user, logout_user, current_user
@@ -38,7 +38,7 @@ def users_signin():
         if bcrypt.checkpw(userPass, checkUser.password):
             login_user(checkUser)
             print("match")
-            return redirect('/userProfile')
+            return redirect('/users/profile')
         else:
             return ('<p>Incorrect Password</p>')
     return render_template('signin.html', form=signInForm)
@@ -75,10 +75,30 @@ def users_signout():
     if users_signout:
         logout_user()
         return redirect('/authentication')
+    
+@app.route('/users/profile', methods=['GET', 'POST'])
+@login_required
+def user_profile():
+
+    userChallenges = UserChallenge.query.filter_by(user_id=current_user.id).all()
+    return render_template('user_profile.html', user=current_user, userchallenge = userChallenges)
+
+@app.route('/courses', defaults={'courseid': None}, methods=['GET', 'POST'])
+@app.route('/courses/<courseid>', methods=['GET', 'POST'])
+def courses(courseid):
+    if courseid:
+        # Fetch challenges for the specific course
+        challenges = Challenge.query.filter_by(courseid=courseid).all()
+        return render_template('challengelist.html', challenges=challenges)
+    
+    # If no specific courseid is provided, list all courses
+    courses = Course.query.all()
+    return render_template('courselist.html', courses=courses)
+
 
  # switch to add courses    
 # @app.route('/add_product', methods=['GET', 'POST'])
-# @login_required
+# @login_required 
 # def add_product():
 #     form = ProductForm()
 #     if not isinstance(current_user._get_current_object(), Admin):
