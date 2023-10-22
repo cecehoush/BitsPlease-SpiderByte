@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% block main %}
-          <div class="box-products">
+    <div class="container">
+        <div class="box">
             {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}
               <ul>
@@ -18,4 +19,5 @@
             <p><input class="btn-1" type="submit" value="Submit"></p>
         </form>
         </div>
+    </div>
 {% endblock %}

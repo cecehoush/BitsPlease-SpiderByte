@@ -68,7 +68,7 @@
     box-shadow: inset 0 0 0 0 var(--contrast-color);
     transition: ease-out 0.5s;
     font-size: 1.4rem;
-    font-family: Georgia, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-family: Georgia, 'Arial Narrow Bold', sans-serif;
     outline: none;
   }
   
@@ -88,7 +88,7 @@
     box-shadow: inset 0 0 0 0 var(--contrast-color);
     transition: ease-out 0.5s;
     font-size: 1.4rem;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-family: Georgia, 'Arial Narrow Bold', sans-serif;
     outline: none;
   }
   
@@ -114,7 +114,7 @@
 
   .box-products {
     width: 20%; 
-    margin: 10px auto; /* This will give it a top/bottom margin of 20px and center it horizontally */
+    margin: 10px auto; 
     border-radius: 5px;
 
     justify-content: center;
@@ -138,13 +138,13 @@
 
 .box-products3 {
   width: 25%; 
-  margin: 50px auto;
+  margin: auto;
   border-radius: 6px;
 
   justify-content: center;
   background-color: var(--island-color);
   color: white;
-  padding: 20px;
+  padding: 5px;
   border: 2px solid var(--contrast-color);
 }
 
@@ -167,11 +167,11 @@
 
 #head-img {
   justify-content: center;
-  width: 200px;
+  width: 130px;
   height: 100px;
   background-size: contain;
   background-repeat: no-repeat;
-  background-image: url('');
+  background-image: url('/static/pics/SpiderByteLogo.png');
 }
 
 .heart-checkbox {
@@ -195,9 +195,28 @@
 }
 
 .heart-checkbox input:checked + .far.fa-heart {
-  display: none; /* Hide the outlined heart when checked */
+  display: none; /* Hide outlined heart when checked */
 }
 
 .heart-checkbox input:checked + .far.fa-heart + .fas.fa-heart {
-  display: inline-block; /* Show the solid heart when checked */
+  display: inline-block; /* Show solid heart when checked */
+}
+
+.course-title {
+  text-align: center; 
+  font-size: 1.6em;     
+  font-weight: bold;  
+}
+
+.challenge-title {
+  text-align: center;       
+  font-size: 1.6em;           
+  font-weight: bold;  
+      
+}
+
+.profile-title {
+  text-align: center;  
+  font-size: 1.6em;      
+  font-weight: bold;  
 }
