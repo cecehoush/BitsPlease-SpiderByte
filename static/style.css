@@ -75,9 +75,6 @@
     box-shadow: inset 300px 0 0 0 var(--compliment-color);
     cursor: pointer;
     color: #000;
-<<<<<<< HEAD
-  }
-=======
   }
 
   .btn-2 {
@@ -114,6 +111,19 @@
     border: 2px solid var(--contrast-color);
   }
 
+  .box2 {
+    position: absolute;
+    top: 13%;
+    left: 0; /* start from the left edge of the screen */
+    width: 100%; /* take up the full width of the screen */
+    height: auto;
+    border-radius: 5px;
+    background-color: var(--island-color);
+    color: white;
+    padding: 15px;
+    border: 2px solid var(--contrast-color);
+}
+
   .box-products {
     width: 20%; 
     margin: 10px auto; 
@@ -122,7 +132,7 @@
     justify-content: center;
     background-color: var(--island-color);
     color: white;
-    padding: 20px;
+    padding: 5px;
     border: 2px solid var(--contrast-color);
 }
 
@@ -233,4 +243,22 @@
   font-size: 1.6em; 
   font-weight: bold;  
 }
->>>>>>> d1598ce50f9aeccc193f3aabc634bead9b43e1f8
+
+.user-points {
+  text-align: center;
+  font-size: 1em; 
+  font-weight: bold;   
+}
+
+.editor-container {
+  padding-top: 150px;
+}
+
+.challengeid-title {
+  position: absolute;
+  transform:translateY(-155%);
+  right: 40%;
+  font-size: 1.6em;     
+  font-weight: bold; 
+  color: #5ead79; 
+}

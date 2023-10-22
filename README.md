@@ -31,7 +31,7 @@
     
 <strong>Embellishments</strong>: 
 <ul>
-    <li> Add a limit to favorites (max of 10) </li>
+    <li> Add a limit to favorites (max of 10) <span>&#10003;</span></li>
     <li> Add UserProfile in top right corner for easy access back to the profile (home page) </li>
     <li> Adding titles <span>&#10003;</span> </li>
     <li> Make titles include the course name for challenges and the user name for profile <span>&#10003;</span> </li>
@@ -47,6 +47,19 @@
     </ul>
     <li> Tutor links/professor feedback </li>
     <li> If you fail 3+ attempts, it recommends an easier or similar problem </li>
-    <li> Add code to completed challenge, so you can view what you've submitted </li>
+    <li> Be able to view what you've submitted in 'views' </li>
     <li> Once finished with a challenge, unpin it from favorites </li>
 </ul>
+<p>
+    <strong> Resources: </strong>
+    <ul>
+    <li> PythonTutor </li>
+    <li> Code Mirror </li>
+    <li> Built with:</li>
+        <ul>
+            <li> Flask </li>
+            <li> SQLAlchemy </li>
+            <li> Bcrypt </li>
+        </ul>
+    </ul>
+</p>
