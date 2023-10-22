@@ -13,7 +13,6 @@ class UserChallenge(db.Model):
     challengeid = db.Column(db.String, primary_key=True)
     user_id = db.Column(db.String, db.ForeignKey('users.id'), nullable=False)
 
-
 class Course(db.Model):
     __tablename__= 'courses'
     courseid = db.Column(db.String, primary_key=True)
@@ -25,6 +24,7 @@ class Challenge(db.Model):
     courseid = db.Column(db.String)
     description = db.Column(db.String)
     difficulty = db.Column(db.String)
+    answers = db.Column(db.String)  #make multiple answers possible 
 
 
 #   user_type = db.Column(db.String)

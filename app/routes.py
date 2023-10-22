@@ -90,7 +90,14 @@ def courses(courseid):
         # Fetch challenges for the specific course
         challenges = Challenge.query.filter_by(courseid=courseid).all()
         return render_template('challengelist.html', challenges=challenges)
-    
+    # newCourse = Course(courseid='CS1050', description='Computer Science 1')
+    # newCourse1 = Course(courseid='CS1051', description='Computer Science 2')
+    # newCourse2 = Course(courseid='CS1052', description='Computer Science 3')
+
+    # db.session.add(newCourse)
+    # db.session.add(newCourse1)
+    # db.session.add(newCourse2)
+    # db.session.commit()
     # If no specific courseid is provided, list all courses
     courses = Course.query.all()
     return render_template('courselist.html', courses=courses)
