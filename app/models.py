@@ -49,8 +49,8 @@ class TestCase(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     challengeid = db.Column(db.String, db.ForeignKey('challenges.challengeid'), nullable=False)
     test_function = db.Column(db.String, nullable=False)
-    input = db.Column(db.String, nullable=False)
-    required_output = db.Column(db.String, nullable=False)
+    input = db.Column(db.JSON, nullable=False)
+    required_output = db.Column(db.JSON, nullable=False)
 
 class FavoriteChallenge(db.Model):
     __tablename__ = 'favorite_challenges'
