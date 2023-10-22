@@ -81,7 +81,9 @@ def users_signout():
 def user_profile():
 
     userChallenges = UserChallenge.query.filter_by(user_id=current_user.id).all()
-    return render_template('user_profile.html', user=current_user, userchallenge = userChallenges)
+    favorited_challenges = current_user.favorites  # Fetching the favorite challenges
+
+    return render_template('user_profile.html', user=current_user, userchallenge = userChallenges, favorited_challenges=favorited_challenges)
 
 @app.route('/courses', defaults={'courseid': None}, methods=['GET', 'POST'])
 @app.route('/courses/<courseid>', methods=['GET', 'POST'])
@@ -126,7 +128,7 @@ def courses(courseid):
 @login_required
 def completed():
     userchallenge = UserChallenge.query.filter_by(user_id=current_user.id).all()
-    # fakeUserChallenge = UserChallenge(challengeid='unga bunga', user_id='cc')
+    # fakeUserChallenge = UserChallenge(challengeid='unga bunga', user_id='Hi')
     # db.session.add(fakeUserChallenge)
     # db.session.commit()
 

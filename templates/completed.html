@@ -1,9 +1,8 @@
 {% extends 'base.html' %}
 {% block main %}
-
+    <div class="box-products">
     <table>
         <tr>
-            <!-- <th>#</th> -->
             <th>Challenges Completed</th>
         </tr>
         <!-- show the user's courses in the table -->
@@ -21,7 +20,7 @@
         {% endfor %}
         
     </table>
-    <p />
+    </div>
     <script type="text/javascript">
         function simple_action(target) {
             window.location = target

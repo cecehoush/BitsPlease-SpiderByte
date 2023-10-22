@@ -1,9 +1,9 @@
 :root {
-    --back-color: #222831;
-    --island-color: #393e46;
-    --contrast-color: #d65a31;
-    --outline-color: #eeeeee;
-    --compliment-color: #29a5ce;
+    --back-color: #1c2029;
+    --island-color: #3e4655; /* 3e4a61 */
+    --contrast-color: #5ead79; /* button color */
+    --outline-color: #c24d2c;
+    --compliment-color: #77c0e4;
   }
 
   body {
@@ -68,7 +68,7 @@
     box-shadow: inset 0 0 0 0 var(--contrast-color);
     transition: ease-out 0.5s;
     font-size: 1.4rem;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-family: Georgia, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     outline: none;
   }
   
@@ -97,3 +97,107 @@
     cursor: pointer;
     color: #000;
   }
+
+  .box {
+    position: absolute;
+    left: 50%;
+    transform: translateY(20%);
+    transform: translateX(-50%);
+    width: 300px;
+    height: auto;
+    border-radius: 5px;
+    background-color: var(--island-color);
+    color: white;
+    padding: 20px;
+    border: 2px solid var(--contrast-color);
+  }
+
+  .box-products {
+    width: 20%; 
+    margin: 10px auto; /* This will give it a top/bottom margin of 20px and center it horizontally */
+    border-radius: 5px;
+
+    justify-content: center;
+    background-color: var(--island-color);
+    color: white;
+    padding: 20px;
+    border: 2px solid var(--contrast-color);
+}
+
+.box-products2 {
+  width: 40%; 
+  margin: 50px auto;
+  border-radius: 6px;
+
+  justify-content: center;
+  background-color: var(--island-color);
+  color: white;
+  padding: 20px;
+  border: 2px solid var(--contrast-color);
+}
+
+.box-products3 {
+  width: 25%; 
+  margin: 50px auto;
+  border-radius: 6px;
+
+  justify-content: center;
+  background-color: var(--island-color);
+  color: white;
+  padding: 20px;
+  border: 2px solid var(--contrast-color);
+}
+
+.box-products4 {
+  width: 40%; 
+  margin: 50px auto;
+  border-radius: 6px;
+
+  justify-content: center;
+  background-color: var(--island-color);
+  color: white;
+  padding: 20px;
+  border: 2px solid var(--contrast-color);
+}
+
+.container {
+  text-align: center;
+  transform: translateY(50%);
+}
+
+#head-img {
+  justify-content: center;
+  width: 200px;
+  height: 100px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-image: url('');
+}
+
+.heart-checkbox {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+}
+
+.heart-checkbox i {
+  font-size: 1.5em; 
+  transition: color 0.3s;
+}
+
+.heart-checkbox .fas.fa-heart {
+  display: none; /* Initially hide the solid heart */
+  color: red; /* Color of the solid heart when displayed */
+}
+
+.heart-checkbox .far.fa-heart {
+  color: red; /* Default color of the outlined heart */
+}
+
+.heart-checkbox input:checked + .far.fa-heart {
+  display: none; /* Hide the outlined heart when checked */
+}
+
+.heart-checkbox input:checked + .far.fa-heart + .fas.fa-heart {
+  display: inline-block; /* Show the solid heart when checked */
+}
