@@ -50,3 +50,15 @@
     <li> Be able to view what you've submitted in 'views' </li>
     <li> Once finished with a challenge, unpin it from favorites </li>
 </ul>
+<p>
+    <strong> Resources: </strong>
+    <ul>
+    <li> PythonTutor </li>
+    <li> Code Mirror </li>
+    <li> Built with:</li>
+        <ul>
+            <li> Flask </li>
+            <li> SQLAlchemy </li>
+        </ul>
+    </ul>
+</p>
