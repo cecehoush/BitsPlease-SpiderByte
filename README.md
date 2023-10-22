@@ -31,7 +31,7 @@
     
 <strong>Embellishments</strong>: 
 <ul>
-    <li> Add a limit to favorites (max of 10) </li>
+    <li> Add a limit to favorites (max of 10) <span>&#10003;</span></li>
     <li> Add UserProfile in top right corner for easy access back to the profile (home page) </li>
     <li> Adding titles <span>&#10003;</span> </li>
     <li> Make titles include the course name for challenges and the user name for profile <span>&#10003;</span> </li>
