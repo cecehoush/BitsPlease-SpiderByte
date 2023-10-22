@@ -45,6 +45,7 @@
         <li> attempts/time taken </li>
     </ul>
     <li> Tutor links/professor feedback </li>
+    <li> Add something to do with the points received, or reason to want them </li>
     <li> If you fail 3+ attempts, it recommends an easier or similar problem </li>
     <li> Add code to completed challenge, so you can view what you've submitted </li>
     <li> Once finished with a challenge, unpin it from favorites </li>
