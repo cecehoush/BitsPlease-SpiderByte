@@ -31,10 +31,10 @@
     
 <strong>Embellishments</strong>: 
 * Add a limit to favorites (max of 10)
-* Adding titles
-* Make titles include course name for challenges and use name for profile <span>&#10003;</span>
-* Add a logo on the top left
-* Make the checkboxes hearts to symbolize 'favorites'
+* Adding titles <span>&#10003;</span>
+* Make titles include the course name for challenges and the user name for profile <span>&#10003;</span>
+* Add a logo on the top left <span>&#10003;</span>
+* Make the checkboxes hearts to symbolize 'favorites' <span>&#10003;</span>
 * Weekly coding events (Arena)
 * Badges/ranking system (points for challenges
 * For completed:
