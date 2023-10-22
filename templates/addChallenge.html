@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block main %}
+<form action="" method="POST" novalidate>
+    {{ form.hidden_tag() }}
+    {{ form.courseid.label }} {{ form.courseid() }}<br>
+    {{ form.challengeid.label }} {{ form.challengeid() }}<br>
+    {{ form.description.label }} {{ form.description() }}<br>
+    {{ form.difficulty.label }} {{ form.difficulty() }}<br>
+    {{ form.functionName.label }} {{ form.functionName() }}<br>
+    
+    {% for test_case in form.test_cases %}
+    <div class="test-case-block">
+        {{ test_case.test_input.label }} {{ test_case.test_input() }}<br>
+        {{ test_case.expected_output.label }} {{ test_case.expected_output() }}<br>
+    </div>
+    {% endfor %}
+    
+    <button type="button" id="addTestCase">Add Test Case</button>
+    <button type="button" id="removeTestCase">Remove Test Case</button>
+    {{ form.submit() }}
+</form>
+<script>
+    $(document).ready(function() {
+        $('#addTestCase').click(function() {
+            // Append new test case fields
+            const newTestCaseHtml = `
+                <div class="test-case-block">
+                    <label>Test Input:</label> <input type="text" name="test_input[]"><br>
+                    <label>Expected Output:</label> <input type="text" name="expected_output[]"><br>
+                </div>`;
+            $('#testCasesContainer').append(newTestCaseHtml);
+        });
+    
+        $('#removeTestCase').click(function() {
+            $('.test-case-block').last().remove();
+        });
+    });
+</script>
+{% endblock %}

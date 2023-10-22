@@ -3,7 +3,7 @@ import uuid
 from app import Submission, app, db, load_user
 from app.codetest import test_user_code
 from app.models import Challenge, User, UserChallenge, Course, TestCase
-from app.forms import SignUpForm, SignInForm
+from app.forms import ChallengeForm, SignUpForm, SignInForm, TestCaseForm
 from flask import flash, render_template, redirect, session, url_for, request
 from flask_login import login_required, login_user, logout_user, current_user
 import bcrypt
@@ -188,6 +188,28 @@ def remove_favorite_challenge(challenge_id):
         db.session.commit()
     return '', 204
 
+
+@app.route('/addchallenge', methods=['GET', 'POST'])
+#@login_required
+def add_challenge():
+    cform = ChallengeForm();
+    if cform.validate_on_submit():
+        newChallenge = Challenge(challengeid=cform.challengeid.data,
+                                 courseid=cform.courseid.data,
+                                 description=cform.description.data,
+                                 difficulty=cform.cform.data)
+        for tcf in cform.test_cases:
+            test_input = tcf.test_input.data
+            expected_output = tcf.expected_output.data
+            newTestCase = TestCase(challengeid=newChallenge.challengeid,  # or you can set the relationship directly
+                               test_function=cform.functionName.data,  # You didn't mention this, you'll need to determine what goes here
+                               input=test_input,
+                               required_output=expected_output)
+            db.session.add(newTestCase)
+        db.session.add(newChallenge)
+        db.session.commit()
+
+    return render_template('addChallenge.html', form=cform)
 
 
  # switch to add courses    

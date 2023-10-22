@@ -17,7 +17,8 @@
             {% endif %}
                     <td>{{ challenge.challengeid }}</td>
                     <td>     
-                        <button type="button" class="btn-1">View</button>
+                        <button type="button" class="btn-2" onclick=simple_action("{{ url_for('challenge', challengeid=challenge.challengeid) }}")>View</button>
+                        <!--  -->
                     </td>
                 </tr>
         {% endfor %}
