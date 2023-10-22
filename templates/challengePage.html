@@ -1,19 +1,20 @@
 {% extends 'base.html' %}
 
-{% block title %}
-Challenge: {{ challenge.challengeid }}
-{% endblock %}
-
 {% block extra_styles_and_scripts %}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.3/codemirror.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.3/mode/python/python.min.js"></script>
 {% endblock %}
 
 {% block main %}
-<h2>{{ challenge.description }}</h2>
-<p>Difficulty: {{ challenge.difficulty }}</p>
+<div class='challengeid-title'> {{challenge.challengeid}} Challenges </div>
+<div class="box2">
+    <p>Difficulty: {{ challenge.difficulty }}</p>
+    <h3>{{ challenge.description }}</h3>
+</div>
 
-<textarea id="editor"></textarea>
+<div class="editor-container">
+    <textarea id="editor"></textarea>
+</div>
 <button id="submitBtn" class='btn-1'>Submit</button>
 <button id="visualizeBtn" class='btn-1'>Visualize</button>
 <iframe id="pythontutor" width="100%" height="500px"></iframe>

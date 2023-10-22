@@ -111,6 +111,19 @@
     border: 2px solid var(--contrast-color);
   }
 
+  .box2 {
+    position: absolute;
+    top: 13%;
+    left: 0; /* start from the left edge of the screen */
+    width: 100%; /* take up the full width of the screen */
+    height: auto;
+    border-radius: 5px;
+    background-color: var(--island-color);
+    color: white;
+    padding: 15px;
+    border: 2px solid var(--contrast-color);
+}
+
   .box-products {
     width: 20%; 
     margin: 10px auto; 
@@ -235,4 +248,17 @@
   text-align: center;
   font-size: 1em; 
   font-weight: bold;   
+}
+
+.editor-container {
+  padding-top: 150px;
+}
+
+.challengeid-title {
+  position: absolute;
+  transform:translateY(-155%);
+  right: 40%;
+  font-size: 1.6em;     
+  font-weight: bold; 
+  color: #5ead79; 
 }
