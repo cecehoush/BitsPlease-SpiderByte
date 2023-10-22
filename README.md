@@ -38,7 +38,7 @@
     <li> Add a logo on the top left <span>&#10003;</span> </li>
     <li> Make the checkboxes hearts to symbolize 'favorites' <span>&#10003;</span> </li>
     <li> Weekly coding events (Arena) </li>
-    <li> Badges/ranking system (points for challenges </li>
+    <li> Badges/ranking system (points for challenges) </li>
     <li> For completed: </li>
     <ul>
         <li> percent completion </li>
