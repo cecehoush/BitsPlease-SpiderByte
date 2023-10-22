@@ -141,15 +141,6 @@ def courses(courseid):
         is_admin = isinstance(current_user._get_current_object(), Admin)
         challenges = Challenge.query.filter_by(courseid=courseid).all()
         return render_template('challengelist.html', challenges=challenges, courseid=courseid, is_admin = is_admin)
-    
-# newChallenge = Challenge(challengeid='ooga booga', courseid='1050', description='put ooga in booga', difficulty='easy')
-# newChallenge1 = Challenge(challengeid='oogity boogity', courseid='CS1050', description='Make an array of 10 boogities', difficulty='medium')
-#db.session.add(newChallenge)
-#db.session.add(newChallenge1)
-
-    # db.session.commit()
-    # If no specific courseid is provided, list all courses
-
 
     courses = Course.query.all()
     return render_template('courselist.html', courses=courses)

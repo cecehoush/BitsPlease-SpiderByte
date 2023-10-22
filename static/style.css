@@ -216,11 +216,11 @@
 
 .heart-checkbox .fas.fa-heart {
   display: none; /* Initially hide the solid heart */
-  color: red; /* Color of the solid heart when displayed */
+  color: var(--compliment-color); /* Default color of the outlined heart */
 }
 
 .heart-checkbox .far.fa-heart {
-  color: red; /* Default color of the outlined heart */
+  color: var(--contrast-color); /* Color of the solid heart when displayed */
 }
 
 .heart-checkbox input:checked + .far.fa-heart {
