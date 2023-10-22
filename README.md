@@ -30,6 +30,7 @@
  
     
 <strong>Embellishments</strong>: 
+<ul>
 * Add a limit to favorites (max of 10)
 * Add UserProfile in top right hand corner for easy access back to profile (home page)
 * Adding titles <span>&#10003;</span>
@@ -39,9 +40,12 @@
 * Weekly coding events (Arena)
 * Badges/ranking system (points for challenges
 * For completed:
-      <pre> percent completion </pre>
-      <pre> attempts/time taken </pre>
+    <ul>
+        <li> percent completion </li>
+        <li> attempts/time taken </li>
+    </ul>
 * Tutor links/professor feedback
 * If you fail 3+ attempts, it recommends an easier or similar problem
 * Add code to completed challenge, so you can view what you've submitted
 * Once finished with challenge, unpin it from favorites
+</ul>
