@@ -2,7 +2,7 @@ from datetime import datetime
 import uuid
 from app import Submission, app, db, load_user
 from app.codetest import test_user_code
-from app.models import Challenge, User, UserChallenge, Course, TestCase
+from app.models import Admin, Challenge, User, UserChallenge, Course, TestCase
 from app.forms import ChallengeForm, SignUpForm, SignInForm, TestCaseForm
 from flask import flash, render_template, redirect, session, url_for, request
 from flask_login import login_required, login_user, logout_user, current_user
@@ -31,12 +31,12 @@ def authentication():
 def users_signin():
     signInForm = SignInForm()
 
-    # checkMota = load_user('tmota')
-    # if checkMota == None:
-    #     newAdmin = Admin(id='tmota', email='admin', password=bcrypt.hashpw('1'.encode('utf-8'), bcrypt.gensalt()), title='Professor', name='Thyago Mota')
-    #     db.session.add(newAdmin)
-    #     # More products can be added in the /add_product page
-    #     db.session.commit()
+    checkAdmin = load_user('spider')
+    if checkAdmin == None:
+        newAdmin = Admin(id='spider', password=bcrypt.hashpw('1'.encode('utf-8'), bcrypt.gensalt()))
+        db.session.add(newAdmin)
+
+        db.session.commit()
 
     if signInForm.validate_on_submit():
         userID = signInForm.id.data
@@ -135,8 +135,9 @@ def user_profile():
 def courses(courseid):
     if courseid:
 
+        is_admin = isinstance(current_user._get_current_object(), Admin)
         challenges = Challenge.query.filter_by(courseid=courseid).all()
-        return render_template('challengelist.html', challenges=challenges, courseid=courseid)
+        return render_template('challengelist.html', challenges=challenges, courseid=courseid, is_admin = is_admin)
     
 # newChallenge = Challenge(challengeid='ooga booga', courseid='1050', description='put ooga in booga', difficulty='easy')
 # newChallenge1 = Challenge(challengeid='oogity boogity', courseid='CS1050', description='Make an array of 10 boogities', difficulty='medium')
@@ -188,7 +189,9 @@ def remove_favorite_challenge(challenge_id):
 @app.route('/addchallenge', methods=['GET', 'POST'])
 #@login_required
 def add_challenge():
-    cform = ChallengeForm();
+    if not isinstance(current_user._get_current_object(), Admin):
+        return redirect(url_for('user_profile'))
+    cform = ChallengeForm()
     if cform.validate_on_submit():
         newChallenge = Challenge(challengeid=cform.challengeid.data,
                                  courseid=cform.courseid.data,
@@ -206,26 +209,3 @@ def add_challenge():
         db.session.commit()
 
     return render_template('addChallenge.html', form=cform)
-
-
- # switch to add courses    
-# @app.route('/add_product', methods=['GET', 'POST'])
-# @login_required 
-# def add_product():
-#     form = ProductForm()
-#     if not isinstance(current_user._get_current_object(), Admin):
-#         return redirect(url_for('products'))
-#     if form.validate_on_submit():
-#         code = form.code.data
-#         price = form.price.data
-#         windowOrDoor = form.type.data
-#         description = form.description.data
-#         available = form.available.data
-
-#         new_product = Product(code=code, price=price, type=windowOrDoor, description=description, available=available)
-#         db.session.add(new_product)
-#         db.session.commit()
-
-#         return redirect(url_for('products'))
-    
-#     return render_template('add_product.html', form=form)

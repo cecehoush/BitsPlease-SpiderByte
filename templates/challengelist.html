@@ -34,6 +34,11 @@
                     <td>     
                         <button type="button" class="btn-2" onclick=simple_action("{{ url_for('challenge', challengeid=challenge.challengeid) }}")>Start</button>
                     </td>
+                    <td>
+                        {% if is_admin %}
+                            <button type="button" onclick=simple_action("{{ url_for('delete_challenge') }}")> DELETE </button>
+                        {% endif %}
+                    </td>
                 </tr>
         {% endfor %}
     </table>
