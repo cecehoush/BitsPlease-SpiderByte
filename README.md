@@ -30,10 +30,12 @@
  
     
 <strong>Embellishments</strong>: 
-* limit to favorites
+* limit to favorites (max of 10)
 * weekly coding events (Arena)
 * badges/ranking system (points for challenges
 * For completed:
       - percent completion
       - attempts/time taken
-* Tutor links/professor feedback 
+* Tutor links/professor feedback
+* if you fail 3+ attempts, it recommends an easier or similar problem
+* Add code to completed challenge, so you can view what you've submitted
