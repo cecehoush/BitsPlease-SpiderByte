@@ -29,15 +29,28 @@ def users_signin():
         db.session.add(newProfessor)
 
         newCourse = Course(courseid='CS1050', description='Computer Science 1')
-        newCourse1 = Course(courseid='CS1051', description='Computer Science 2')
-        newCourse2 = Course(courseid='CS1052', description='Computer Science 3')
+        newCourse1 = Course(courseid='CS2050', description='Computer Science 2')
+        newCourse2 = Course(courseid='CS1010', description='Computer Science Basics')
 
         db.session.add(newCourse)
         db.session.add(newCourse1)
         db.session.add(newCourse2)
 
-        newCourseOoga = Challenge(courseid = 'CS1050', challengeid='wortwort', description='Create function multiply that will multiply 2 numbers and return the result.', difficulty='HARD', test_cases=[TestCase(input="1,2", required_output='2', test_function='multiply'), TestCase(input="3,2", required_output='6', test_function='multiply')])
-        db.session.add(newCourseOoga)
+        newChallenge1 = Challenge(courseid = 'CS1010', challengeid='Multiplication', description='Create function multiply that will multiply 2 numbers and return the result.', difficulty='easy', test_cases=[TestCase(input="1,2", required_output='2', test_function='multiply'), TestCase(input="3,2", required_output='6', test_function='multiply')])
+        newChallenge2 = Challenge(courseid = 'CS2050', challengeid='LinkedList Creation', description='Create a linked list with nodes that can store integers. Implement functions to add, remove, and display elements.', difficulty='medium', test_cases=[TestCase(input="add(5)->add(10)->display()", required_output='5->10', test_function='linked_list'), TestCase(input="add(5)->add(10)->remove(5)->display()", required_output='10', test_function='linked_list')])
+        newChallenge3 = Challenge(courseid = 'CS2050', challengeid='Queue Operations', description='Create a queue with basic operations like enqueue, dequeue, and peek. Ensure the queue works on the principle of FIFO.', difficulty='easy', test_cases=[TestCase(input="enqueue(5)->enqueue(10)->peek()", required_output='5', test_function='queue'), TestCase(input="enqueue(5)->enqueue(10)->dequeue()", required_output='5', test_function='queue')])
+        newChallenge4 = Challenge(courseid = 'CS1050', challengeid='Ordered Array Operations', description='Create an ordered array and implement insertion so the array remains sorted after each insertion.', difficulty='medium', test_cases=[TestCase(input="insert(5)->insert(3)->display()", required_output='3,5', test_function='ordered_array'), TestCase(input="insert(5)->insert(10)->insert(1)->display()", required_output='1,5,10', test_function='ordered_array')])
+        newChallenge5 = Challenge(courseid = 'CS2050', challengeid='Recursive Factorial', description='Create a function to compute the factorial of a number using recursion.', difficulty='hard', test_cases=[TestCase(input="factorial(5)", required_output='120', test_function='recursive_factorial'), TestCase(input="factorial(3)", required_output='6', test_function='recursive_factorial')])
+        newChallenge6 = Challenge(courseid = 'CS1050', challengeid='Implement Quicksort', description='Implement the quicksort algorithm to sort an array of integers in ascending order.', difficulty='hard', test_cases=[TestCase(input="[5, 2, 9, 1, 5, 6]", required_output='[1, 2, 5, 5, 6, 9]', test_function='quicksort'), TestCase(input="[3, 1, 4, 1, 5, 9, 2, 6, 5, 3]", required_output='[1, 1, 2, 3, 3, 4, 5, 5, 6, 9]', test_function='quicksort')])
+        newChallenge7 = Challenge(courseid = 'CS1010', challengeid='Greet Me', description='Create a function named "greet" that takes a name as input and returns "Hello, [name]!".', difficulty='hard', test_cases=[TestCase(input='"Alice"', required_output='"Hello, Alice!"', test_function='greet'),])
+
+        db.session.add(newChallenge1)
+        db.session.add(newChallenge2)
+        db.session.add(newChallenge3)
+        db.session.add(newChallenge4)
+        db.session.add(newChallenge5)
+        db.session.add(newChallenge6)
+        db.session.add(newChallenge7)
 
         db.session.commit()
 
