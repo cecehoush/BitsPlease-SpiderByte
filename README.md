@@ -40,6 +40,9 @@
     <li> Weekly coding events (Arena) </li>
     <li> Badges/ranking system (points for challenges) <span>&#10003;</span> </li>
     <li> Add something to do with the points received (Leaderboard? Rewards?) </li>
+    <li> Make professors answers to challenges viewable </li>
+    <li> confetti when the users solution to challenge is correct </li>
+    <li> Make admins able to add Example Code </li>
     <li> For completed: </li>
     <ul>
         <li> percent completion </li>
