@@ -2,10 +2,10 @@
 
 <strong>Team Name:</strong> Bits Please
 <p>
-<strong>Team Members:</strong> Cece Housh, Vincent Cordova, and Danny Vo
+<strong>Team Members:</strong> Cece Housh, Vincent Cordova, Anthony Pilla and Danny Vo
 </p>
 <p>
-<strong>Web Name:</strong> Algo Arena
+<strong>Web Name:</strong> SpiderByte
 </p>
 <p>
 <strong>Algorithm Visualizer name:</strong> DigitalDive
@@ -15,7 +15,7 @@
 <p>
 <em> Leetcode school and class-based </em>
     <ul>     
-    <li> Algorithm visualizer (on the side if we have time) </li>
+    <li> Algorithm visualizer </li>
     <li> Msu based with class subcategories </li>
     <li> Focuses on class material being learned </li>
     <li> Theme it as the code being a challenger </li>
@@ -30,10 +30,23 @@
  
     
 <strong>Embellishments</strong>: 
-* limit to favorites
-* weekly coding events (Arena)
-* badges/ranking system (points for challenges
-* For completed:
-      - percent completion
-      - attempts/time taken
-* Tutor links/professor feedback 
+<ul>
+    <li> Add a limit to favorites (max of 10) </li>
+    <li> Add UserProfile in top right corner for easy access back to the profile (home page) </li>
+    <li> Adding titles <span>&#10003;</span> </li>
+    <li> Make titles include the course name for challenges and the user name for profile <span>&#10003;</span> </li>
+    <li> Add a logo on the top left <span>&#10003;</span> </li>
+    <li> Make the checkboxes hearts to symbolize 'favorites' <span>&#10003;</span> </li>
+    <li> Weekly coding events (Arena) </li>
+    <li> Badges/ranking system (points for challenges) <span>&#10003;</span> </li>
+    <li> Add something to do with the points received (Leaderboard? Rewards?) </li>
+    <li> For completed: </li>
+    <ul>
+        <li> percent completion </li>
+        <li> attempts/time taken </li>
+    </ul>
+    <li> Tutor links/professor feedback </li>
+    <li> If you fail 3+ attempts, it recommends an easier or similar problem </li>
+    <li> Add code to completed challenge, so you can view what you've submitted </li>
+    <li> Once finished with a challenge, unpin it from favorites </li>
+</ul>
