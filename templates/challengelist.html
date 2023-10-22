@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block main %}
+
+    <table>
+        <tr>
+            <!-- <th>#</th> -->
+            <th>Challenge</th>
+            <th>description</th>
+            <th>difficulty</th>
+        </tr>
+        <!-- show the user's courses in the table -->
+        {% for challenge in challenges %}
+            {% if loop.index % 2 == 0 %}
+                <tr class="even_row">
+            {% else %}
+                <tr class="odd_row">
+            {% endif %}
+                    <td>{{ challenge.challengeid }}</td>
+                    <td>{{ challenge.description }}</td>
+                    <td>{{ challenge.difficulty }}</td>
+                    <td>
+                        <input type="checkbox" class="favorite-challenge" data-challenge-id="{{ challenge.challengeid }}" {% if challenge in current_user.favorites %} checked {% endif %}>
+                    </td>                    
+                    <td>     
+                        <button type="button" class="btn-2" onclick=simple_action("{{ url_for('challenge', challengeid=challenge.challengeid) }}")>Start</button>
+                    </td>
+                </tr>
+        {% endfor %}
+        
+    </table>
+    <p />
+    <script type="text/javascript">
+        function simple_action(target) {
+            window.location = target
+        }
+    </script>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function() {
+            const checkboxes = document.querySelectorAll('.favorite-challenge');
+            checkboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', function() {
+                    const challengeId = this.getAttribute('data-challenge-id');
+                    const isChecked = this.checked;
+                    fetch(`/favorite_challenge/${challengeId}`, {
+                        method: isChecked ? 'POST' : 'DELETE',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+    
+</div>
+
+{% endblock %}
