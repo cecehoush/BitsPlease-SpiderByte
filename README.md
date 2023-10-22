@@ -39,8 +39,8 @@
 * Weekly coding events (Arena)
 * Badges/ranking system (points for challenges
 * For completed:
-      - percent completion
-      - attempts/time taken
+      <li> percent completion </li>
+      <li> attempts/time taken </li>
 * Tutor links/professor feedback
 * If you fail 3+ attempts, it recommends an easier or similar problem
 * Add code to completed challenge, so you can view what you've submitted
