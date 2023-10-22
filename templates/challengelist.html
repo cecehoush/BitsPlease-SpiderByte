@@ -37,7 +37,7 @@
                     <td>
                         {% if is_admin %}
                             <form action="{{ url_for('delete_challenge', challenge_id=challenge.challengeid) }}" method="post" style="display: inline;">
-                                <button type="submit">DELETE</button>
+                                <button type="submit" class="btn-1">DELETE</button>
                             </form>
                         {% endif %}
                     </td>
