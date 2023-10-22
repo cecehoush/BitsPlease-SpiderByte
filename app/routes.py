@@ -45,12 +45,12 @@ def users_signin():
         #newChallenge7 = Challenge(courseid = 'CS1010', challengeid='Greet Me', description='Create a function named "greet" that takes a name as input and returns "Hello, [name]!".', difficulty='hard', test_cases=[TestCase(input='"Alice"', required_output='Hello, Alice!', test_function='greet'),])
 
         db.session.add(newChallenge1)
-        db.session.add(newChallenge2)
-        db.session.add(newChallenge3)
-        db.session.add(newChallenge4)
+        #db.session.add(newChallenge3)
+        #db.session.add(newChallenge2)
+        #db.session.add(newChallenge4)
         db.session.add(newChallenge5)
         db.session.add(newChallenge6)
-        db.session.add(newChallenge7)
+        #db.session.add(newChallenge7)
 
         db.session.commit()
 
