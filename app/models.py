@@ -8,7 +8,23 @@ class User(db.Model, UserMixin):
     password = db.Column(db.LargeBinary, nullable=False)
     userChallenge = db.relationship('UserChallenge', backref='user_ref', lazy=True)
     favorites = db.relationship('Challenge', secondary='favorite_challenges', backref=db.backref('favorited_by', lazy=True))
+    user_type = db.Column(db.String)
+    __mapper_args__ = {
+        'polymorphic_identity': 'user',  # Discriminator value for User instances
+        'polymorphic_on': user_type  # Specifying which column to use for discrimination
+    }
 
+class Admin(User):
+    __tablename__ = 'admins'
+    __mapper_args__ = {
+        'polymorphic_identity': 'admin',  # Discriminator value for Admin instances
+    }
+
+class Professor(User):
+    __tablename__ = 'professors'
+    __mapper_args__ = {
+        'polymorphic_identity': 'professor'  
+    }
 
 class UserChallenge(db.Model):
     __tablename__ = 'user_challenges'
@@ -26,7 +42,7 @@ class Challenge(db.Model):
     courseid = db.Column(db.String)
     description = db.Column(db.String)
     difficulty = db.Column(db.String)
-    test_cases = db.relationship('TestCase', backref='challenge', lazy=True)
+    test_cases = db.relationship('TestCase', backref='challenge', cascade='all,delete')
 
 class TestCase(db.Model):
     __tablename__ = 'test_cases'
@@ -45,19 +61,3 @@ class FavoriteChallenge(db.Model):
 
 #   user_type = db.Column(db.String)
 
-# class Reseller(User):
-#     __tablename__ = 'resellers'
-#     company = db.Column(db.String)
-#     address = db.Column(db.String)
-#     phone = db.Column(db.String)
-#     website = db.Column(db.String)
-#     __mapper_args__ = {
-#         'polymorphic_identity': 'reseller'  # Discriminator value for Admin instances
-#     }
-# class Admin(User):
-#     __tablename__ = 'admins'
-#     name = db.Column(db.String)
-#     title = db.Column(db.String)
-#     __mapper_args__ = {
-#         'polymorphic_identity': 'admin'  # Discriminator value for Admin instances
-#     }
