@@ -70,6 +70,9 @@ def challenge(challengeid):
         results = test_user_code(user_code, all_test_cases) 
 
         if all(results):  # Check if all test cases passed
+            passedChallenge = UserChallenge(challengeid=challengeid, user_id=current_user.id)
+            db.session.add(passedChallenge)
+            db.session.commit()
             return "All test cases passed!", 200
         else:
             failed_tests = [i+1 for i, res in enumerate(results) if not res]
@@ -137,16 +140,16 @@ def courses(courseid):
     # db.session.add(newChallenge)
     # db.session.add(newChallenge1)
 
-    # newCourse = Course(courseid='CS1050', description='Computer Science 1')
+    newCourse = Course(courseid='CS1050', description='Computer Science 1')
     # newCourse1 = Course(courseid='CS1051', description='Computer Science 2')
     # newCourse2 = Course(courseid='CS1052', description='Computer Science 3')
 
-    # db.session.add(newCourse)
+    db.session.add(newCourse)
     # db.session.add(newCourse1)
     # db.session.add(newCourse2)
-    # newCourseOoga = Challenge(courseid = 'CS1050', challengeid='wortwort', description='Create function multiply that will multiply 2 numbers and return the result.', difficulty='HARD', test_cases=[TestCase(input="1,2", required_output='2', test_function='multiply'), TestCase(input="3,2", required_output='6', test_function='multiply')])
-    # db.session.add(newCourseOoga)
-    # db.session.commit()
+    newCourseOoga = Challenge(courseid = 'CS1050', challengeid='wortwort', description='Create function multiply that will multiply 2 numbers and return the result.', difficulty='HARD', test_cases=[TestCase(input="1,2", required_output='2', test_function='multiply'), TestCase(input="3,2", required_output='6', test_function='multiply')])
+    db.session.add(newCourseOoga)
+    db.session.commit()
     # If no specific courseid is provided, list all courses
 
 
