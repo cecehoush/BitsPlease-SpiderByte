@@ -42,7 +42,7 @@ class Challenge(db.Model):
     courseid = db.Column(db.String)
     description = db.Column(db.String)
     difficulty = db.Column(db.String)
-    test_cases = db.relationship('TestCase', backref='challenge', lazy=True)
+    test_cases = db.relationship('TestCase', backref='challenge', cascade='all,delete')
 
 class TestCase(db.Model):
     __tablename__ = 'test_cases'

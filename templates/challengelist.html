@@ -32,11 +32,13 @@
                     <td>{{ challenge.description }}</td>
                     <td>{{ challenge.difficulty }}</td>
                     <td>     
-                        <button type="button" class="btn-2" onclick=simple_action("{{ url_for('challenge', challengeid=challenge.challengeid) }}")>Start</button>
+                        <button type="button" class="btn-2" onclick="simple_action('{{ url_for('challenge', challengeid=challenge.challengeid) }}')">Start</button>
                     </td>
                     <td>
                         {% if is_admin %}
-                            <button type="button" onclick=simple_action("{{ url_for('delete_challenge') }}")> DELETE </button>
+                            <form action="{{ url_for('delete_challenge', challenge_id=challenge.challengeid) }}" method="post" style="display: inline;">
+                                <button type="submit">DELETE</button>
+                            </form>
                         {% endif %}
                     </td>
                 </tr>
@@ -46,11 +48,9 @@
 
 <script type="text/javascript">
     function simple_action(target) {
-        window.location = target
+        window.location = target;
     }
-</script>
 
-<script type="text/javascript">
     document.addEventListener('DOMContentLoaded', function() {
         const checkboxes = document.querySelectorAll('.favorite-challenge');
         checkboxes.forEach(checkbox => {
@@ -67,5 +67,6 @@
         });
     });
 </script>
+
 </div>
 {% endblock %}

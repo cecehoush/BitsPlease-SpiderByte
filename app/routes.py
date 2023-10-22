@@ -2,7 +2,7 @@ from datetime import datetime
 import uuid
 from app import Submission, app, db, load_user
 from app.codetest import test_user_code
-from app.models import Admin, Challenge, User, UserChallenge, Course, TestCase
+from app.models import Admin, Challenge, Professor, User, UserChallenge, Course, TestCase
 from app.forms import ChallengeForm, SignUpForm, SignInForm, TestCaseForm
 from flask import flash, render_template, redirect, session, url_for, request
 from flask_login import login_required, login_user, logout_user, current_user
@@ -15,17 +15,6 @@ import bcrypt
 def authentication(): 
     return render_template('authentication.html')
 
-# @app.route('/submit', methods=['POST'])
-# def submit_code():
-#     code = request.form.get('code')
-#     if code:
-#         submission = Submission(code=code)
-#         print(code)
-#         db.session.add(submission)
-#         db.session.commit()
-#         return "Code submitted successfully!"
-#     return "Error in submission!", 400
-
 # sign-in functionality from previous homework
 @app.route('/users/signin', methods=['GET', 'POST'])
 def users_signin():
@@ -35,6 +24,20 @@ def users_signin():
     if checkAdmin == None:
         newAdmin = Admin(id='spider', password=bcrypt.hashpw('1'.encode('utf-8'), bcrypt.gensalt()))
         db.session.add(newAdmin)
+
+        newProfessor = Professor(id='Dan', password=bcrypt.hashpw('1'.encode('utf-8'), bcrypt.gensalt()))
+        db.session.add(newProfessor)
+
+        newCourse = Course(courseid='CS1050', description='Computer Science 1')
+        newCourse1 = Course(courseid='CS1051', description='Computer Science 2')
+        newCourse2 = Course(courseid='CS1052', description='Computer Science 3')
+
+        db.session.add(newCourse)
+        db.session.add(newCourse1)
+        db.session.add(newCourse2)
+
+        newCourseOoga = Challenge(courseid = 'CS1050', challengeid='wortwort', description='Create function multiply that will multiply 2 numbers and return the result.', difficulty='HARD', test_cases=[TestCase(input="1,2", required_output='2', test_function='multiply'), TestCase(input="3,2", required_output='6', test_function='multiply')])
+        db.session.add(newCourseOoga)
 
         db.session.commit()
 
@@ -144,15 +147,6 @@ def courses(courseid):
 #db.session.add(newChallenge)
 #db.session.add(newChallenge1)
 
-    # newCourse = Course(courseid='CS1050', description='Computer Science 1')
-    # newCourse1 = Course(courseid='CS1051', description='Computer Science 2')
-    # newCourse2 = Course(courseid='CS1052', description='Computer Science 3')
-
-    # db.session.add(newCourse)
-    # db.session.add(newCourse1)
-    # db.session.add(newCourse2)
-    # newCourseOoga = Challenge(courseid = 'CS1050', challengeid='wortwort', description='Create function multiply that will multiply 2 numbers and return the result.', difficulty='HARD', test_cases=[TestCase(input="1,2", required_output='2', test_function='multiply'), TestCase(input="3,2", required_output='6', test_function='multiply')])
-    # db.session.add(newCourseOoga)
     # db.session.commit()
     # If no specific courseid is provided, list all courses
 
@@ -209,3 +203,12 @@ def add_challenge():
         db.session.commit()
 
     return render_template('addChallenge.html', form=cform)
+
+@app.route('/delete_challenge/<challenge_id>', methods=['POST'])
+@login_required
+def delete_challenge(challenge_id):
+    challenge = Challenge.query.get(challenge_id)
+    if challenge:
+        db.session.delete(challenge)
+        db.session.commit()
+    return redirect(url_for('courses'))
