@@ -31,21 +31,21 @@
     
 <strong>Embellishments</strong>: 
 <ul>
-* Add a limit to favorites (max of 10)
-* Add UserProfile in top right hand corner for easy access back to profile (home page)
-* Adding titles <span>&#10003;</span>
-* Make titles include the course name for challenges and the user name for profile <span>&#10003;</span>
-* Add a logo on the top left <span>&#10003;</span>
-* Make the checkboxes hearts to symbolize 'favorites' <span>&#10003;</span>
-* Weekly coding events (Arena)
-* Badges/ranking system (points for challenges
-* For completed:
+    <li> Add a limit to favorites (max of 10) </li>
+    <li> Add UserProfile in top right hand corner for easy access back to profile (home page) </li>
+    <li> Adding titles <span>&#10003;</span> </li>
+    <li> Make titles include the course name for challenges and the user name for profile <span>&#10003;</span> </li>
+    <li> Add a logo on the top left <span>&#10003;</span> </li>
+    <li> Make the checkboxes hearts to symbolize 'favorites' <span>&#10003;</span> </li>
+    <li> Weekly coding events (Arena) </li>
+    <li> Badges/ranking system (points for challenges </li>
+    <li> For completed: </li>
     <ul>
         <li> percent completion </li>
         <li> attempts/time taken </li>
     </ul>
-* Tutor links/professor feedback
-* If you fail 3+ attempts, it recommends an easier or similar problem
-* Add code to completed challenge, so you can view what you've submitted
-* Once finished with challenge, unpin it from favorites
+    <li> Tutor links/professor feedback </li>
+    <li> If you fail 3+ attempts, it recommends an easier or similar problem </li>
+    <li> Add code to completed challenge, so you can view what you've submitted </li>
+    <li> Once finished with challenge, unpin it from favorites </li>
 </ul>
