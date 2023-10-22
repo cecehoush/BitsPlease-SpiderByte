@@ -26,7 +26,15 @@ class Challenge(db.Model):
     courseid = db.Column(db.String)
     description = db.Column(db.String)
     difficulty = db.Column(db.String)
-# answers = db.Column(db.String)  #make multiple answers possible 
+    test_cases = db.relationship('TestCase', backref='challenge', lazy=True)
+
+class TestCase(db.Model):
+    __tablename__ = 'test_cases'
+    id = db.Column(db.Integer, primary_key=True)
+    challengeid = db.Column(db.String, db.ForeignKey('challenges.challengeid'), nullable=False)
+    test_function = db.Column(db.String, nullable=False)
+    input = db.Column(db.String, nullable=False)
+    required_output = db.Column(db.String, nullable=False)
 
 class FavoriteChallenge(db.Model):
     __tablename__ = 'favorite_challenges'

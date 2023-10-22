@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Code Submission
+{% endblock %}
+
+{% block extra_styles_and_scripts %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.3/codemirror.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.3/mode/python/python.min.js"></script>
+{% endblock %}
+
+{% block main %}
+<form action="/editor" method="post">
+    <textarea id="editor"></textarea>
+    <button type="submit">Visualize</button>
+</form>
+<iframe id="pythontutor" width="100%" height="500px"></iframe>
+
+<script>
+    var editor = CodeMirror.fromTextArea(document.getElementById("editor"), {
+        lineNumbers: true,
+        mode: "python"
+    });
+
+    document.querySelector('form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const code = editor.getValue();
+        const encodedCode = encodeURIComponent(code);
+        const tutorUrl = `http://pythontutor.com/iframe-embed.html#code=${encodedCode}&cumulative=false&heapPrimitives=nevernest&mode=display&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false`;
+        document.getElementById('pythontutor').src = tutorUrl;
+    });
+</script>
+{% endblock %}

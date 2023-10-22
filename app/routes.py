@@ -1,9 +1,10 @@
 from datetime import datetime
 import uuid
-from app import app, db, load_user
-from app.models import Challenge, User, UserChallenge, Course
+from app import Submission, app, db, load_user
+from app.codetest import test_user_code
+from app.models import Challenge, User, UserChallenge, Course, TestCase
 from app.forms import SignUpForm, SignInForm
-from flask import flash, jsonify, render_template, redirect, session, url_for, request
+from flask import flash, render_template, redirect, session, url_for, request
 from flask_login import login_required, login_user, logout_user, current_user
 import bcrypt
 
@@ -13,6 +14,17 @@ import bcrypt
 @app.route('/authentication.html')
 def authentication(): 
     return render_template('authentication.html')
+
+# @app.route('/submit', methods=['POST'])
+# def submit_code():
+#     code = request.form.get('code')
+#     if code:
+#         submission = Submission(code=code)
+#         print(code)
+#         db.session.add(submission)
+#         db.session.commit()
+#         return "Code submitted successfully!"
+#     return "Error in submission!", 400
 
 # sign-in functionality from previous homework
 @app.route('/users/signin', methods=['GET', 'POST'])
@@ -34,7 +46,6 @@ def users_signin():
         if checkUser == None:
             return ('<p>No user found</p>')
         
-
         if bcrypt.checkpw(userPass, checkUser.password):
             login_user(checkUser)
             print("match")
@@ -42,6 +53,38 @@ def users_signin():
         else:
             return ('<p>Incorrect Password</p>')
     return render_template('signin.html', form=signInForm)
+
+
+@app.route('/challenge/<challengeid>', methods=['GET', 'POST'])
+def challenge(challengeid):
+    challenge_data = Challenge.query.get(challengeid)
+    if not challenge_data:
+        return "Challenge not found", 404
+
+    if request.method == 'POST':
+        user_code = request.form['code']
+
+        challengeCheck = challenge_data.test_cases
+        all_test_cases = [test_case for test_case in challengeCheck] 
+        
+        results = test_user_code(user_code, all_test_cases) 
+
+        if all(results):  # Check if all test cases passed (ugly)
+            previouslyCompleted = UserChallenge.query.filter_by(challengeid=challengeid, user_id=current_user.id).first()
+            if not(previouslyCompleted):
+                passedChallenge = UserChallenge(challengeid=challengeid, user_id=current_user.id)
+                db.session.add(passedChallenge)
+                db.session.commit()
+            else:
+                return "You have already completed this challenge!"
+            return "All test cases passed!", 200
+        else:
+            failed_tests = [i+1 for i, res in enumerate(results) if not res]
+            return f"Failed test cases: {', '.join(map(str, failed_tests))}", 400
+
+    return render_template('challengePage.html', challenge=challenge_data)
+
+
 
 # sign-up functionality from previous homework
 @app.route('/users/signup', methods=['GET', 'POST'])
@@ -64,7 +107,8 @@ def users_signup():
             db.session.commit()
             return redirect('/authentication')
         else:
-            return ('<p>Password didn\'t match confirmation</p>')
+            flash('Password didn\'t match confirmation', 'error')
+            return redirect(url_for('users_signup'))
         
     return render_template('signup.html', form=signUp)
 
@@ -96,19 +140,9 @@ def courses(courseid):
     
     # newChallenge = Challenge(challengeid='ooga booga', courseid='1050', description='put ooga in booga', difficulty='easy')
     # newChallenge1 = Challenge(challengeid='oogity boogity', courseid='CS1050', description='Make an array of 10 boogities', difficulty='medium')
-    # newChallenge2 = Challenge(challengeid='unga bunga', courseid='CS1050', description='make unga a bunga', difficulty='hard')
-    # newChallenge3 = Challenge(challengeid='ooga super', courseid='CS1051', description='make an ooga array', difficulty='easy')
-    # newChallenge4 = Challenge(challengeid='Web ooga', courseid='CS1051', description='make ooga website', difficulty='medium')
-    # newChallenge5 = Challenge(challengeid='Web booga', courseid='CS1051', description='make booga website', difficulty='hard')
-    # newChallenge6 = Challenge(challengeid='aurrhe', courseid='CS1052', description='arf array', difficulty='easy')
 
     # db.session.add(newChallenge)
     # db.session.add(newChallenge1)
-    # db.session.add(newChallenge2)
-    # db.session.add(newChallenge3)
-    # db.session.add(newChallenge4)
-    # db.session.add(newChallenge5)
-    # db.session.add(newChallenge6)
 
     # newCourse = Course(courseid='CS1050', description='Computer Science 1')
     # newCourse1 = Course(courseid='CS1051', description='Computer Science 2')
@@ -117,6 +151,8 @@ def courses(courseid):
     # db.session.add(newCourse)
     # db.session.add(newCourse1)
     # db.session.add(newCourse2)
+    # newCourseOoga = Challenge(courseid = 'CS1050', challengeid='wortwort', description='Create function multiply that will multiply 2 numbers and return the result.', difficulty='HARD', test_cases=[TestCase(input="1,2", required_output='2', test_function='multiply'), TestCase(input="3,2", required_output='6', test_function='multiply')])
+    # db.session.add(newCourseOoga)
     # db.session.commit()
     # If no specific courseid is provided, list all courses
 

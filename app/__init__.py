@@ -11,6 +11,10 @@ db = SQLAlchemy()
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
 db.init_app(app)
 
+class Submission(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    code = db.Column(db.Text, nullable=False)
+
 from app import models
 with app.app_context(): 
     db.create_all()
