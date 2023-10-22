@@ -1,10 +1,9 @@
 from datetime import datetime
 import uuid
 from app import Submission, app, db, load_user
-from app.models import User
+from app.codetest import test_user_code
+from app.models import Challenge, User, UserChallenge, Course, TestCase
 from app.forms import SignUpForm, SignInForm
-from app.codetest import TestUserCode
-from app.runcode import executePython
 from flask import flash, render_template, redirect, session, url_for, request
 from flask_login import login_required, login_user, logout_user, current_user
 import bcrypt
@@ -47,24 +46,38 @@ def users_signin():
         if checkUser == None:
             return ('<p>No user found</p>')
         
-
         if bcrypt.checkpw(userPass, checkUser.password):
             login_user(checkUser)
             print("match")
-            return redirect('/userProfile')
+            return redirect('/users/profile')
         else:
             return ('<p>Incorrect Password</p>')
     return render_template('signin.html', form=signInForm)
 
 
-@app.route('/editor', methods=['GET', 'POST'])
-def code_editor():
+@app.route('/challenge/<challengeid>', methods=['GET', 'POST'])
+def challenge(challengeid):
+    challenge_data = Challenge.query.get(challengeid)
+    if not challenge_data:
+        return "Challenge not found", 404
+
     if request.method == 'POST':
         user_code = request.form['code']
-        print(TestUserCode.test_add(user_code))
-        result = executePython(user_code)
-        return result  # This sends the result back as plain text to the frontend
-    return render_template('codeEditor.html')
+
+        challengeCheck = challenge_data.test_cases
+        all_test_cases = [test_case for test_case in challengeCheck] 
+        
+        results = test_user_code(user_code, all_test_cases) 
+
+        if all(results):  # Check if all test cases passed
+            return "All test cases passed!", 200
+        else:
+            failed_tests = [i+1 for i, res in enumerate(results) if not res]
+            return f"Failed test cases: {', '.join(map(str, failed_tests))}", 400
+
+    return render_template('challengePage.html', challenge=challenge_data)
+
+
 
 # sign-up functionality from previous homework
 @app.route('/users/signup', methods=['GET', 'POST'])
@@ -87,7 +100,8 @@ def users_signup():
             db.session.commit()
             return redirect('/authentication')
         else:
-            return ('<p>Password didn\'t match confirmation</p>')
+            flash('Password didn\'t match confirmation', 'error')
+            return redirect(url_for('users_signup'))
         
     return render_template('signup.html', form=signUp)
 
@@ -98,10 +112,78 @@ def users_signout():
     if users_signout:
         logout_user()
         return redirect('/authentication')
+    
+@app.route('/users/profile', methods=['GET', 'POST'])
+@login_required
+def user_profile():
+
+    userChallenges = UserChallenge.query.filter_by(user_id=current_user.id).all()
+    return render_template('user_profile.html', user=current_user, userchallenge = userChallenges)
+
+@app.route('/courses', defaults={'courseid': None}, methods=['GET', 'POST'])
+@app.route('/courses/<courseid>', methods=['GET', 'POST'])
+@login_required
+def courses(courseid):
+    if courseid:
+
+        challenges = Challenge.query.filter_by(courseid=courseid).all()
+        return render_template('challengelist.html', challenges=challenges)
+    
+    # newChallenge = Challenge(challengeid='ooga booga', courseid='1050', description='put ooga in booga', difficulty='easy')
+    # newChallenge1 = Challenge(challengeid='oogity boogity', courseid='CS1050', description='Make an array of 10 boogities', difficulty='medium')
+
+    # db.session.add(newChallenge)
+    # db.session.add(newChallenge1)
+
+    # newCourse = Course(courseid='CS1050', description='Computer Science 1')
+    # newCourse1 = Course(courseid='CS1051', description='Computer Science 2')
+    # newCourse2 = Course(courseid='CS1052', description='Computer Science 3')
+
+    # db.session.add(newCourse)
+    # db.session.add(newCourse1)
+    # db.session.add(newCourse2)
+    # newCourseOoga = Challenge(courseid = 'CS1050', challengeid='wortwort', description='Create function multiply that will multiply 2 numbers and return the result.', difficulty='HARD', test_cases=[TestCase(input="1,2", required_output='2', test_function='multiply'), TestCase(input="3,2", required_output='6', test_function='multiply')])
+    # db.session.add(newCourseOoga)
+    # db.session.commit()
+    # If no specific courseid is provided, list all courses
+
+
+    courses = Course.query.all()
+    return render_template('courselist.html', courses=courses)
+
+@app.route('/completed', methods=['GET', 'POST'])
+@login_required
+def completed():
+    userchallenge = UserChallenge.query.filter_by(user_id=current_user.id).all()
+    # fakeUserChallenge = UserChallenge(challengeid='unga bunga', user_id='cc')
+    # db.session.add(fakeUserChallenge)
+    # db.session.commit()
+
+    return render_template('completed.html', user=current_user, userChallenge=userchallenge)
+
+@app.route('/favorite_challenge/<challenge_id>', methods=['POST'])
+@login_required
+def add_favorite_challenge(challenge_id):
+    challenge = Challenge.query.get(challenge_id)
+    if challenge not in current_user.favorites:
+        current_user.favorites.append(challenge)
+        db.session.commit()
+    return '', 204
+
+@app.route('/favorite_challenge/<challenge_id>', methods=['DELETE'])
+@login_required
+def remove_favorite_challenge(challenge_id):
+    challenge = Challenge.query.get(challenge_id)
+    if challenge in current_user.favorites:
+        current_user.favorites.remove(challenge)
+        db.session.commit()
+    return '', 204
+
+
 
  # switch to add courses    
 # @app.route('/add_product', methods=['GET', 'POST'])
-# @login_required
+# @login_required 
 # def add_product():
 #     form = ProductForm()
 #     if not isinstance(current_user._get_current_object(), Admin):
