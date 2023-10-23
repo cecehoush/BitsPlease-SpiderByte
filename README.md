@@ -2,7 +2,7 @@
 
 <strong>Team Name:</strong> Bits Please
 <p>
-<strong>Team Members:</strong> Cece Housh, Vincent Cordova, Anthony Pilla and Danny Vo
+<strong>Team Members:</strong> Cece Housh, Vincent Cordova
 </p>
 <p>
 <strong>Web Name:</strong> SpiderByte
