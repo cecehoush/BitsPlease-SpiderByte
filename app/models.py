@@ -9,6 +9,7 @@ class User(db.Model, UserMixin):
     userChallenge = db.relationship('UserChallenge', backref='user_ref', lazy=True)
     favorites = db.relationship('Challenge', secondary='favorite_challenges', backref=db.backref('favorited_by', lazy=True))
     user_type = db.Column(db.String)
+    points = db.Column(db.Integer, default=0)
     __mapper_args__ = {
         'polymorphic_identity': 'user',  # Discriminator value for User instances
         'polymorphic_on': user_type  # Specifying which column to use for discrimination

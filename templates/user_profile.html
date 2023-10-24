@@ -9,56 +9,57 @@
         <button type="button" class="btn-2" onclick=simple_action("{{ url_for('completed') }}")>Completed</button>
     </div>
 
-    {# Initialize the points variable #}
-    {% set points = 0 %}
+    {# Initialize the namespace object with points attribute #}
+    {% set ns = namespace(points=0) %}
+
+    {# Calculate points for all completed challenges by the user #}
+    {% for challenge in userchallenge %}
+        {% if challenge.difficulty == 'easy' %}
+            {% set ns.points = ns.points + 10 %}
+        {% elif challenge.difficulty == 'medium' %}
+            {% set ns.points = ns.points + 20 %}
+        {% elif challenge.difficulty == 'hard' %}
+            {% set ns.points = ns.points + 30 %}
+        {% endif %}
+    {% endfor %}
 
 </div>
-    <div class="box-products2">    
-        <table>
-            <tr>
-                <th>Favorited Challenges</th>
-                <th>Description</th>
-                <th>Difficulty</th>
-            </tr>
-            <!-- show the user's courses in the table -->
-            {% for challenge in favorited_challenges %}
-
-                {% if loop.index <= 10 %} {# display up to 10 favorites #}
-
-                {% if challenge.difficulty == 'easy' %}
-                    {% set points = points + 1 %}
-                {% elif challenge.difficulty == 'medium' %}
-                    {% set points = points + 2 %}
-                {% elif challenge.difficulty == 'hard' %}
-                    {% set points = points + 3 %}
-                {% endif %}
-
+<div class="box-products2">    
+    <table>
+        <tr>
+            <th>Favorited Challenges</th>
+            <th>Description</th>
+            <th>Difficulty</th>
+        </tr>
+        <!-- show the user's favorited challenges in the table -->
+        {% for challenge in favorited_challenges %}
+            {% if loop.index <= 10 %} {# display up to 10 favorites #}
                 {% if loop.index % 2 == 0 %}
                     <tr class="even_row">
                 {% else %}
                     <tr class="odd_row">
                 {% endif %}
-                        <td>{{ challenge.challengeid }}</td>
-                        <td>{{ challenge.description }}</td>
-                        <td>{{ challenge.difficulty }}</td>     
-                        <td>     
-                            <button type="button" class="btn-1">Start</button>
-                        </td>
-                    </tr>
-                {% endif %}
-            {% endfor %}
-        </table>
+                    <td>{{ challenge.challengeid }}</td>
+                    <td>{{ challenge.description }}</td>
+                    <td>{{ challenge.difficulty }}</td>     
+                    <td>     
+                        <button type="button" class="btn-1">Start</button>
+                    </td>
+                </tr>
+            {% endif %}
+        {% endfor %}
+    </table>
 
-        <h3 class="user-points">
-            <p>Total Points: {{ points }}</p>
-        </h3>
-        
-        <button type="button" class="btn-2" onclick=simple_action("{{ url_for('users_signout') }}")>SignOut</button>
+    <h3 class="user-points">
+        <p>Total Points: {{ points }}</p>
+    </h3>
+    
+    <button type="button" class="btn-2" onclick=simple_action("{{ url_for('users_signout') }}")>SignOut</button>
 
-    </div>
-    <script type="text/javascript">
-        function simple_action(target) {
-            window.location = target
-        }
-    </script>
+</div>
+<script type="text/javascript">
+    function simple_action(target) {
+        window.location = target
+    }
+</script>
 {% endblock %}

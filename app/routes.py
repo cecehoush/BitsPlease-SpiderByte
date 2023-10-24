@@ -85,12 +85,24 @@ def challenge(challengeid):
         
         results = test_user_code(user_code, all_test_cases) 
 
-        if all(results):  # Check if all test cases passed (ugly)
+        if all(results):  # Check if all test cases passed
             previouslyCompleted = UserChallenge.query.filter_by(challengeid=challengeid, user_id=current_user.id).first()
             if not(previouslyCompleted):
                 passedChallenge = UserChallenge(challengeid=challengeid, user_id=current_user.id)
                 db.session.add(passedChallenge)
+                
+                # Add points to user based on challenge difficulty
+                DIFFICULTY_POINTS = {
+                    'easy': 10,
+                    'medium': 20,
+                    'hard': 30
+                }
+                points_to_award = DIFFICULTY_POINTS.get(challenge_data.difficulty, 0)
+                current_user.points += points_to_award  # Increase the user's points
+                
                 db.session.commit()
+                
+                return f"Challenge completed! You earned {points_to_award} points!", 200
             else:
                 return "You have already completed this challenge!"
             return "All test cases passed!", 200
@@ -139,11 +151,11 @@ def users_signout():
 @app.route('/users/profile', methods=['GET', 'POST'])
 @login_required
 def user_profile():
-
     userChallenges = UserChallenge.query.filter_by(user_id=current_user.id).all()
     favorited_challenges = current_user.favorites  # Fetching the favorite challenges
 
-    return render_template('user_profile.html', user=current_user, userchallenge = userChallenges, favorited_challenges=favorited_challenges)
+    # Just adding the 'points' parameter here
+    return render_template('user_profile.html', user=current_user, userchallenge=userChallenges, favorited_challenges=favorited_challenges, points=current_user.points)
 
 @app.route('/courses', defaults={'courseid': None}, methods=['GET', 'POST'])
 @app.route('/courses/<courseid>', methods=['GET', 'POST'])
