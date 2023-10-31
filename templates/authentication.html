@@ -6,8 +6,22 @@
     <p />
     Please, choose an option below:
     <p />
-    <button type="button" class="btn-1" onclick=simple_action("{{ url_for('users_signup') }}")>Sign Up</button>
-    <button type="button" class="btn-1" onclick=simple_action("{{ url_for('users_signin') }}")>Sign In</button>
+    <button type="button" class="button-54" onclick=simple_action("{{ url_for('users_signup') }}")>Sign Up</button>
+    <button type="button" class="button-54" onclick=simple_action("{{ url_for('users_signin') }}")>Sign In</button>
+    <!-- <button class="button-82-pushable" role="button" onclick=simple_action("{{ url_for('users_signup') }}")>
+        <span class="button-82-shadow"></span>
+        <span class="button-82-edge"></span>
+        <span class="button-82-front text">
+          Sign Up
+        </span>
+    </button>
+      <button class="button-82-pushable" role="button" onclick=simple_action("{{ url_for('users_signin') }}")>
+        <span class="button-82-shadow"></span>
+        <span class="button-82-edge"></span>
+        <span class="button-82-front text">
+          Sign In
+        </span> -->
+      </button>
     </div>
     <script type="text/javascript">
         function simple_action(target) {
@@ -16,3 +30,4 @@
     </script>
 </div>
 {% endblock %}
+

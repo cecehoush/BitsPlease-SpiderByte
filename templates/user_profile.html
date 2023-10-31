@@ -5,8 +5,8 @@
     <h1 class="profile-title"> {{user.id}}'s Profile</h1>
 
     <div class="box-products">
-        <button type="button" class="btn-2" onclick=simple_action("{{ url_for('courses') }}")>Courses</button>
-        <button type="button" class="btn-2" onclick=simple_action("{{ url_for('completed') }}")>Completed</button>
+        <button type="button" class="button-54" onclick=simple_action("{{ url_for('courses') }}")>Courses</button>
+        <button type="button" class="button-54" onclick=simple_action("{{ url_for('completed') }}")>Completed</button>
     </div>
 
     {# Initialize the namespace object with points attribute #}
@@ -43,7 +43,7 @@
                     <td>{{ challenge.description }}</td>
                     <td>{{ challenge.difficulty }}</td>     
                     <td>     
-                        <button type="button" class="btn-1">Start</button>
+                        <button type="button" class="button-33">Start</button>
                     </td>
                 </tr>
             {% endif %}
@@ -54,7 +54,7 @@
         <p>Total Points: {{ points }}</p>
     </h3>
     
-    <button type="button" class="btn-2" onclick=simple_action("{{ url_for('users_signout') }}")>SignOut</button>
+    <button type="button" class="button-49" onclick=simple_action("{{ url_for('users_signout') }}")>SignOut</button>
 
 </div>
 <script type="text/javascript">
