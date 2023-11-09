@@ -12,7 +12,20 @@
 </head>
 <body>
     <div id="head-img"></div>
-{% block main %}
-{% endblock %}
+    {% if request.endpoint not in ['users_signin', 'users_signout','users_signup', 'authentication'] %}
+    <div class="dropdown">
+        <button class="dropbtn">Menu</button>
+        <div class="dropdown-content">
+            <a href="{{ url_for('user_profile') }}">Profile</a>
+            <a href="{{ url_for('courses') }}">Courses</a>
+            <a href="{{ url_for('completed') }}">Completed</a>
+            <a href="{{ url_for('users_signout') }}">Sign Out</a>
+        </div>
+    </div>
+    {% endif %}
+    {% block main %}
+    {% endblock %}
 </body>
 </html>
+
+
